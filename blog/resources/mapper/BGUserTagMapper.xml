@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackblod.web.dao.BGUserTagMapper">
+  <resultMap id="BaseResultMap" type="model.BGUserTag">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="user_oId" jdbcType="VARCHAR" property="user_oId" />
+    <result column="tag_oId" jdbcType="VARCHAR" property="tag_oId" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oId, user_oId, tag_oId, type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from blodgod_user_tag
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from blodgod_user_tag
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.BGUserTag">
+    insert into blodgod_user_tag (oId, user_oId, tag_oId, 
+      type)
+    values (#{oId,jdbcType=VARCHAR}, #{user_oId,jdbcType=VARCHAR}, #{tag_oId,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="model.BGUserTag">
+    insert into blodgod_user_tag
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="user_oId != null">
+        user_oId,
+      </if>
+      <if test="tag_oId != null">
+        tag_oId,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="user_oId != null">
+        #{user_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="tag_oId != null">
+        #{tag_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.BGUserTag">
+    update blodgod_user_tag
+    <set>
+      <if test="user_oId != null">
+        user_oId = #{user_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="tag_oId != null">
+        tag_oId = #{tag_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.BGUserTag">
+    update blodgod_user_tag
+    set user_oId = #{user_oId,jdbcType=VARCHAR},
+      tag_oId = #{tag_oId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>

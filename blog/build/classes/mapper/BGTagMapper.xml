@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackblod.web.dao.BGTagMapper">
+  <resultMap id="BaseResultMap" type="model.BGTag">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="tagReferenceCount" jdbcType="INTEGER" property="tagReferenceCount" />
+    <result column="tagCommentCount" jdbcType="INTEGER" property="tagCommentCount" />
+    <result column="tagFollowerCount" jdbcType="INTEGER" property="tagFollowerCount" />
+    <result column="tagLinkCount" jdbcType="INTEGER" property="tagLinkCount" />
+    <result column="tagTitle" jdbcType="VARCHAR" property="tagTitle" />
+    <result column="tagURI" jdbcType="VARCHAR" property="tagURI" />
+    <result column="tagIconPath" jdbcType="VARCHAR" property="tagIconPath" />
+    <result column="tagStatus" jdbcType="INTEGER" property="tagStatus" />
+    <result column="tagGoodCnt" jdbcType="INTEGER" property="tagGoodCnt" />
+    <result column="tagBadCnt" jdbcType="INTEGER" property="tagBadCnt" />
+    <result column="tagSeoTitle" jdbcType="VARCHAR" property="tagSeoTitle" />
+    <result column="tagSeoKeywords" jdbcType="VARCHAR" property="tagSeoKeywords" />
+    <result column="tagRandomDouble" jdbcType="DOUBLE" property="tagRandomDouble" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="model.BGTagWithBLOBs">
+    <result column="tagDescription" jdbcType="LONGVARCHAR" property="tagDescription" />
+    <result column="tagCSS" jdbcType="LONGVARCHAR" property="tagCSS" />
+    <result column="tagSeoDesc" jdbcType="LONGVARCHAR" property="tagSeoDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oId, tagReferenceCount, tagCommentCount, tagFollowerCount, tagLinkCount, tagTitle, 
+    tagURI, tagIconPath, tagStatus, tagGoodCnt, tagBadCnt, tagSeoTitle, tagSeoKeywords, 
+    tagRandomDouble
+  </sql>
+  <sql id="Blob_Column_List">
+    tagDescription, tagCSS, tagSeoDesc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blodgod_tag
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from blodgod_tag
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="model.BGTagWithBLOBs">
+    insert into blodgod_tag (oId, tagReferenceCount, tagCommentCount, 
+      tagFollowerCount, tagLinkCount, tagTitle, 
+      tagURI, tagIconPath, tagStatus, 
+      tagGoodCnt, tagBadCnt, tagSeoTitle, 
+      tagSeoKeywords, tagRandomDouble, tagDescription, 
+      tagCSS, tagSeoDesc)
+    values (#{oId,jdbcType=VARCHAR}, #{tagReferenceCount,jdbcType=INTEGER}, #{tagCommentCount,jdbcType=INTEGER}, 
+      #{tagFollowerCount,jdbcType=INTEGER}, #{tagLinkCount,jdbcType=INTEGER}, #{tagTitle,jdbcType=VARCHAR}, 
+      #{tagURI,jdbcType=VARCHAR}, #{tagIconPath,jdbcType=VARCHAR}, #{tagStatus,jdbcType=INTEGER}, 
+      #{tagGoodCnt,jdbcType=INTEGER}, #{tagBadCnt,jdbcType=INTEGER}, #{tagSeoTitle,jdbcType=VARCHAR}, 
+      #{tagSeoKeywords,jdbcType=VARCHAR}, #{tagRandomDouble,jdbcType=DOUBLE}, #{tagDescription,jdbcType=LONGVARCHAR}, 
+      #{tagCSS,jdbcType=LONGVARCHAR}, #{tagSeoDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.BGTagWithBLOBs">
+    insert into blodgod_tag
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="tagReferenceCount != null">
+        tagReferenceCount,
+      </if>
+      <if test="tagCommentCount != null">
+        tagCommentCount,
+      </if>
+      <if test="tagFollowerCount != null">
+        tagFollowerCount,
+      </if>
+      <if test="tagLinkCount != null">
+        tagLinkCount,
+      </if>
+      <if test="tagTitle != null">
+        tagTitle,
+      </if>
+      <if test="tagURI != null">
+        tagURI,
+      </if>
+      <if test="tagIconPath != null">
+        tagIconPath,
+      </if>
+      <if test="tagStatus != null">
+        tagStatus,
+      </if>
+      <if test="tagGoodCnt != null">
+        tagGoodCnt,
+      </if>
+      <if test="tagBadCnt != null">
+        tagBadCnt,
+      </if>
+      <if test="tagSeoTitle != null">
+        tagSeoTitle,
+      </if>
+      <if test="tagSeoKeywords != null">
+        tagSeoKeywords,
+      </if>
+      <if test="tagRandomDouble != null">
+        tagRandomDouble,
+      </if>
+      <if test="tagDescription != null">
+        tagDescription,
+      </if>
+      <if test="tagCSS != null">
+        tagCSS,
+      </if>
+      <if test="tagSeoDesc != null">
+        tagSeoDesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="tagReferenceCount != null">
+        #{tagReferenceCount,jdbcType=INTEGER},
+      </if>
+      <if test="tagCommentCount != null">
+        #{tagCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="tagFollowerCount != null">
+        #{tagFollowerCount,jdbcType=INTEGER},
+      </if>
+      <if test="tagLinkCount != null">
+        #{tagLinkCount,jdbcType=INTEGER},
+      </if>
+      <if test="tagTitle != null">
+        #{tagTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="tagURI != null">
+        #{tagURI,jdbcType=VARCHAR},
+      </if>
+      <if test="tagIconPath != null">
+        #{tagIconPath,jdbcType=VARCHAR},
+      </if>
+      <if test="tagStatus != null">
+        #{tagStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tagGoodCnt != null">
+        #{tagGoodCnt,jdbcType=INTEGER},
+      </if>
+      <if test="tagBadCnt != null">
+        #{tagBadCnt,jdbcType=INTEGER},
+      </if>
+      <if test="tagSeoTitle != null">
+        #{tagSeoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="tagSeoKeywords != null">
+        #{tagSeoKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="tagRandomDouble != null">
+        #{tagRandomDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="tagDescription != null">
+        #{tagDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tagCSS != null">
+        #{tagCSS,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tagSeoDesc != null">
+        #{tagSeoDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.BGTagWithBLOBs">
+    update blodgod_tag
+    <set>
+      <if test="tagReferenceCount != null">
+        tagReferenceCount = #{tagReferenceCount,jdbcType=INTEGER},
+      </if>
+      <if test="tagCommentCount != null">
+        tagCommentCount = #{tagCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="tagFollowerCount != null">
+        tagFollowerCount = #{tagFollowerCount,jdbcType=INTEGER},
+      </if>
+      <if test="tagLinkCount != null">
+        tagLinkCount = #{tagLinkCount,jdbcType=INTEGER},
+      </if>
+      <if test="tagTitle != null">
+        tagTitle = #{tagTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="tagURI != null">
+        tagURI = #{tagURI,jdbcType=VARCHAR},
+      </if>
+      <if test="tagIconPath != null">
+        tagIconPath = #{tagIconPath,jdbcType=VARCHAR},
+      </if>
+      <if test="tagStatus != null">
+        tagStatus = #{tagStatus,jdbcType=INTEGER},
+      </if>
+      <if test="tagGoodCnt != null">
+        tagGoodCnt = #{tagGoodCnt,jdbcType=INTEGER},
+      </if>
+      <if test="tagBadCnt != null">
+        tagBadCnt = #{tagBadCnt,jdbcType=INTEGER},
+      </if>
+      <if test="tagSeoTitle != null">
+        tagSeoTitle = #{tagSeoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="tagSeoKeywords != null">
+        tagSeoKeywords = #{tagSeoKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="tagRandomDouble != null">
+        tagRandomDouble = #{tagRandomDouble,jdbcType=DOUBLE},
+      </if>
+      <if test="tagDescription != null">
+        tagDescription = #{tagDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tagCSS != null">
+        tagCSS = #{tagCSS,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tagSeoDesc != null">
+        tagSeoDesc = #{tagSeoDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="model.BGTagWithBLOBs">
+    update blodgod_tag
+    set tagReferenceCount = #{tagReferenceCount,jdbcType=INTEGER},
+      tagCommentCount = #{tagCommentCount,jdbcType=INTEGER},
+      tagFollowerCount = #{tagFollowerCount,jdbcType=INTEGER},
+      tagLinkCount = #{tagLinkCount,jdbcType=INTEGER},
+      tagTitle = #{tagTitle,jdbcType=VARCHAR},
+      tagURI = #{tagURI,jdbcType=VARCHAR},
+      tagIconPath = #{tagIconPath,jdbcType=VARCHAR},
+      tagStatus = #{tagStatus,jdbcType=INTEGER},
+      tagGoodCnt = #{tagGoodCnt,jdbcType=INTEGER},
+      tagBadCnt = #{tagBadCnt,jdbcType=INTEGER},
+      tagSeoTitle = #{tagSeoTitle,jdbcType=VARCHAR},
+      tagSeoKeywords = #{tagSeoKeywords,jdbcType=VARCHAR},
+      tagRandomDouble = #{tagRandomDouble,jdbcType=DOUBLE},
+      tagDescription = #{tagDescription,jdbcType=LONGVARCHAR},
+      tagCSS = #{tagCSS,jdbcType=LONGVARCHAR},
+      tagSeoDesc = #{tagSeoDesc,jdbcType=LONGVARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.BGTag">
+    update blodgod_tag
+    set tagReferenceCount = #{tagReferenceCount,jdbcType=INTEGER},
+      tagCommentCount = #{tagCommentCount,jdbcType=INTEGER},
+      tagFollowerCount = #{tagFollowerCount,jdbcType=INTEGER},
+      tagLinkCount = #{tagLinkCount,jdbcType=INTEGER},
+      tagTitle = #{tagTitle,jdbcType=VARCHAR},
+      tagURI = #{tagURI,jdbcType=VARCHAR},
+      tagIconPath = #{tagIconPath,jdbcType=VARCHAR},
+      tagStatus = #{tagStatus,jdbcType=INTEGER},
+      tagGoodCnt = #{tagGoodCnt,jdbcType=INTEGER},
+      tagBadCnt = #{tagBadCnt,jdbcType=INTEGER},
+      tagSeoTitle = #{tagSeoTitle,jdbcType=VARCHAR},
+      tagSeoKeywords = #{tagSeoKeywords,jdbcType=VARCHAR},
+      tagRandomDouble = #{tagRandomDouble,jdbcType=DOUBLE}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>

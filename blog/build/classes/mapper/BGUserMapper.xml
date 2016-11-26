@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackblod.web.dao.BGUserMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.model.BGUser">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="userNo" jdbcType="INTEGER" property="userNo" />
+    <result column="userEmail" jdbcType="VARCHAR" property="userEmail" />
+    <result column="userName" jdbcType="VARCHAR" property="userName" />
+    <result column="userPassword" jdbcType="VARCHAR" property="userPassword" />
+    <result column="userNickname" jdbcType="VARCHAR" property="userNickname" />
+    <result column="userTags" jdbcType="VARCHAR" property="userTags" />
+    <result column="userURL" jdbcType="VARCHAR" property="userURL" />
+    <result column="userQQ" jdbcType="VARCHAR" property="userQQ" />
+    <result column="userIntro" jdbcType="VARCHAR" property="userIntro" />
+    <result column="userAvatarType" jdbcType="INTEGER" property="userAvatarType" />
+    <result column="userAvatarURL" jdbcType="VARCHAR" property="userAvatarURL" />
+    <result column="userOnlineFlag" jdbcType="CHAR" property="userOnlineFlag" />
+    <result column="userB3Key" jdbcType="VARCHAR" property="userB3Key" />
+    <result column="userB3ClientAddArticleURL" jdbcType="VARCHAR" property="userB3ClientAddArticleURL" />
+    <result column="userB3ClientUpdateArticleURL" jdbcType="VARCHAR" property="userB3ClientUpdateArticleURL" />
+    <result column="userB3ClientAddCommentURL" jdbcType="VARCHAR" property="userB3ClientAddCommentURL" />
+    <result column="userRole" jdbcType="VARCHAR" property="userRole" />
+    <result column="userArticleCount" jdbcType="INTEGER" property="userArticleCount" />
+    <result column="userCommentCount" jdbcType="INTEGER" property="userCommentCount" />
+    <result column="userTagCount" jdbcType="INTEGER" property="userTagCount" />
+    <result column="userStatus" jdbcType="INTEGER" property="userStatus" />
+    <result column="userPoint" jdbcType="INTEGER" property="userPoint" />
+    <result column="userUsedPoint" jdbcType="INTEGER" property="userUsedPoint" />
+    <result column="userJoinPointRank" jdbcType="INTEGER" property="userJoinPointRank" />
+    <result column="userJoinUsedPointRank" jdbcType="INTEGER" property="userJoinUsedPointRank" />
+    <result column="userLatestArticleTime" jdbcType="BIGINT" property="userLatestArticleTime" />
+    <result column="userLatestCmtTime" jdbcType="BIGINT" property="userLatestCmtTime" />
+    <result column="userLatestLoginTime" jdbcType="BIGINT" property="userLatestLoginTime" />
+    <result column="userLatestLoginIP" jdbcType="VARCHAR" property="userLatestLoginIP" />
+    <result column="userAppRole" jdbcType="INTEGER" property="userAppRole" />
+    <result column="userCheckinTime" jdbcType="BIGINT" property="userCheckinTime" />
+    <result column="userLongestCheckinStreakStart" jdbcType="INTEGER" property="userLongestCheckinStreakStart" />
+    <result column="userLongestCheckinStreakEnd" jdbcType="INTEGER" property="userLongestCheckinStreakEnd" />
+    <result column="userCurrentCheckinStreakStart" jdbcType="INTEGER" property="userCurrentCheckinStreakStart" />
+    <result column="userCurrentCheckinStreakEnd" jdbcType="INTEGER" property="userCurrentCheckinStreakEnd" />
+    <result column="userLongestCheckinStreak" jdbcType="INTEGER" property="userLongestCheckinStreak" />
+    <result column="userCurrentCheckinStreak" jdbcType="INTEGER" property="userCurrentCheckinStreak" />
+    <result column="userSkin" jdbcType="VARCHAR" property="userSkin" />
+    <result column="userMobileSkin" jdbcType="VARCHAR" property="userMobileSkin" />
+    <result column="userCountry" jdbcType="VARCHAR" property="userCountry" />
+    <result column="userProvince" jdbcType="VARCHAR" property="userProvince" />
+    <result column="userCity" jdbcType="VARCHAR" property="userCity" />
+    <result column="userUpdateTime" jdbcType="BIGINT" property="userUpdateTime" />
+    <result column="userGeoStatus" jdbcType="INTEGER" property="userGeoStatus" />
+    <result column="syncWithblodgodClient" jdbcType="CHAR" property="syncWithblodgodClient" />
+    <result column="userCommentViewMode" jdbcType="INTEGER" property="userCommentViewMode" />
+    <result column="userUAStatus" jdbcType="INTEGER" property="userUAStatus" />
+    <result column="userNotifyStatus" jdbcType="INTEGER" property="userNotifyStatus" />
+    <result column="userPointStatus" jdbcType="INTEGER" property="userPointStatus" />
+    <result column="userFollowerStatus" jdbcType="INTEGER" property="userFollowerStatus" />
+    <result column="userFollowingArticleStatus" jdbcType="INTEGER" property="userFollowingArticleStatus" />
+    <result column="userFollowingTagStatus" jdbcType="INTEGER" property="userFollowingTagStatus" />
+    <result column="userFollowingUserStatus" jdbcType="INTEGER" property="userFollowingUserStatus" />
+    <result column="userCommentStatus" jdbcType="INTEGER" property="userCommentStatus" />
+    <result column="userArticleStatus" jdbcType="INTEGER" property="userArticleStatus" />
+    <result column="userOnlineStatus" jdbcType="INTEGER" property="userOnlineStatus" />
+    <result column="userTimelineStatus" jdbcType="INTEGER" property="userTimelineStatus" />
+    <result column="userForgeLinkStatus" jdbcType="INTEGER" property="userForgeLinkStatus" />
+    <result column="userListPageSize" jdbcType="INTEGER" property="userListPageSize" />
+    <result column="userAvatarViewMode" jdbcType="INTEGER" property="userAvatarViewMode" />
+    <result column="userSubMailStatus" jdbcType="INTEGER" property="userSubMailStatus" />
+    <result column="userSubMailSendTime" jdbcType="BIGINT" property="userSubMailSendTime" />
+    <result column="userKeyboardShortcutsStatus" jdbcType="INTEGER" property="userKeyboardShortcutsStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oId, userNo, userEmail, userName, userPassword, userNickname, userTags, userURL, 
+    userQQ, userIntro, userAvatarType, userAvatarURL, userOnlineFlag, userB3Key, userB3ClientAddArticleURL, 
+    userB3ClientUpdateArticleURL, userB3ClientAddCommentURL, userRole, userArticleCount, 
+    userCommentCount, userTagCount, userStatus, userPoint, userUsedPoint, userJoinPointRank, 
+    userJoinUsedPointRank, userLatestArticleTime, userLatestCmtTime, userLatestLoginTime, 
+    userLatestLoginIP, userAppRole, userCheckinTime, userLongestCheckinStreakStart, userLongestCheckinStreakEnd, 
+    userCurrentCheckinStreakStart, userCurrentCheckinStreakEnd, userLongestCheckinStreak, 
+    userCurrentCheckinStreak, userSkin, userMobileSkin, userCountry, userProvince, userCity, 
+    userUpdateTime, userGeoStatus, syncWithblodgodClient, userCommentViewMode, userUAStatus, 
+    userNotifyStatus, userPointStatus, userFollowerStatus, userFollowingArticleStatus, 
+    userFollowingTagStatus, userFollowingUserStatus, userCommentStatus, userArticleStatus, 
+    userOnlineStatus, userTimelineStatus, userForgeLinkStatus, userListPageSize, userAvatarViewMode, 
+    userSubMailStatus, userSubMailSendTime, userKeyboardShortcutsStatus
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from blodgod_user
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from blodgod_user
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.blackblod.web.model.BGUser">
+    insert into blodgod_user (oId, userNo, userEmail, 
+      userName, userPassword, userNickname, 
+      userTags, userURL, userQQ, 
+      userIntro, userAvatarType, userAvatarURL, 
+      userOnlineFlag, userB3Key, userB3ClientAddArticleURL, 
+      userB3ClientUpdateArticleURL, userB3ClientAddCommentURL, 
+      userRole, userArticleCount, userCommentCount, 
+      userTagCount, userStatus, userPoint, 
+      userUsedPoint, userJoinPointRank, userJoinUsedPointRank, 
+      userLatestArticleTime, userLatestCmtTime, 
+      userLatestLoginTime, userLatestLoginIP, 
+      userAppRole, userCheckinTime, userLongestCheckinStreakStart, 
+      userLongestCheckinStreakEnd, userCurrentCheckinStreakStart, 
+      userCurrentCheckinStreakEnd, userLongestCheckinStreak, 
+      userCurrentCheckinStreak, userSkin, userMobileSkin, 
+      userCountry, userProvince, userCity, 
+      userUpdateTime, userGeoStatus, syncWithblodgodClient, 
+      userCommentViewMode, userUAStatus, userNotifyStatus, 
+      userPointStatus, userFollowerStatus, userFollowingArticleStatus, 
+      userFollowingTagStatus, userFollowingUserStatus, 
+      userCommentStatus, userArticleStatus, userOnlineStatus, 
+      userTimelineStatus, userForgeLinkStatus, 
+      userListPageSize, userAvatarViewMode, userSubMailStatus, 
+      userSubMailSendTime, userKeyboardShortcutsStatus
+      )
+    values (#{oId,jdbcType=VARCHAR}, #{userNo,jdbcType=INTEGER}, #{userEmail,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{userNickname,jdbcType=VARCHAR}, 
+      #{userTags,jdbcType=VARCHAR}, #{userURL,jdbcType=VARCHAR}, #{userQQ,jdbcType=VARCHAR}, 
+      #{userIntro,jdbcType=VARCHAR}, #{userAvatarType,jdbcType=INTEGER}, #{userAvatarURL,jdbcType=VARCHAR}, 
+      #{userOnlineFlag,jdbcType=CHAR}, #{userB3Key,jdbcType=VARCHAR}, #{userB3ClientAddArticleURL,jdbcType=VARCHAR}, 
+      #{userB3ClientUpdateArticleURL,jdbcType=VARCHAR}, #{userB3ClientAddCommentURL,jdbcType=VARCHAR}, 
+      #{userRole,jdbcType=VARCHAR}, #{userArticleCount,jdbcType=INTEGER}, #{userCommentCount,jdbcType=INTEGER}, 
+      #{userTagCount,jdbcType=INTEGER}, #{userStatus,jdbcType=INTEGER}, #{userPoint,jdbcType=INTEGER}, 
+      #{userUsedPoint,jdbcType=INTEGER}, #{userJoinPointRank,jdbcType=INTEGER}, #{userJoinUsedPointRank,jdbcType=INTEGER}, 
+      #{userLatestArticleTime,jdbcType=BIGINT}, #{userLatestCmtTime,jdbcType=BIGINT}, 
+      #{userLatestLoginTime,jdbcType=BIGINT}, #{userLatestLoginIP,jdbcType=VARCHAR}, 
+      #{userAppRole,jdbcType=INTEGER}, #{userCheckinTime,jdbcType=BIGINT}, #{userLongestCheckinStreakStart,jdbcType=INTEGER}, 
+      #{userLongestCheckinStreakEnd,jdbcType=INTEGER}, #{userCurrentCheckinStreakStart,jdbcType=INTEGER}, 
+      #{userCurrentCheckinStreakEnd,jdbcType=INTEGER}, #{userLongestCheckinStreak,jdbcType=INTEGER}, 
+      #{userCurrentCheckinStreak,jdbcType=INTEGER}, #{userSkin,jdbcType=VARCHAR}, #{userMobileSkin,jdbcType=VARCHAR}, 
+      #{userCountry,jdbcType=VARCHAR}, #{userProvince,jdbcType=VARCHAR}, #{userCity,jdbcType=VARCHAR}, 
+      #{userUpdateTime,jdbcType=BIGINT}, #{userGeoStatus,jdbcType=INTEGER}, #{syncWithblodgodClient,jdbcType=CHAR}, 
+      #{userCommentViewMode,jdbcType=INTEGER}, #{userUAStatus,jdbcType=INTEGER}, #{userNotifyStatus,jdbcType=INTEGER}, 
+      #{userPointStatus,jdbcType=INTEGER}, #{userFollowerStatus,jdbcType=INTEGER}, #{userFollowingArticleStatus,jdbcType=INTEGER}, 
+      #{userFollowingTagStatus,jdbcType=INTEGER}, #{userFollowingUserStatus,jdbcType=INTEGER}, 
+      #{userCommentStatus,jdbcType=INTEGER}, #{userArticleStatus,jdbcType=INTEGER}, #{userOnlineStatus,jdbcType=INTEGER}, 
+      #{userTimelineStatus,jdbcType=INTEGER}, #{userForgeLinkStatus,jdbcType=INTEGER}, 
+      #{userListPageSize,jdbcType=INTEGER}, #{userAvatarViewMode,jdbcType=INTEGER}, #{userSubMailStatus,jdbcType=INTEGER}, 
+      #{userSubMailSendTime,jdbcType=BIGINT}, #{userKeyboardShortcutsStatus,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.blackblod.web.model.BGUser">
+    insert into blodgod_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="userNo != null">
+        userNo,
+      </if>
+      <if test="userEmail != null">
+        userEmail,
+      </if>
+      <if test="userName != null">
+        userName,
+      </if>
+      <if test="userPassword != null">
+        userPassword,
+      </if>
+      <if test="userNickname != null">
+        userNickname,
+      </if>
+      <if test="userTags != null">
+        userTags,
+      </if>
+      <if test="userURL != null">
+        userURL,
+      </if>
+      <if test="userQQ != null">
+        userQQ,
+      </if>
+      <if test="userIntro != null">
+        userIntro,
+      </if>
+      <if test="userAvatarType != null">
+        userAvatarType,
+      </if>
+      <if test="userAvatarURL != null">
+        userAvatarURL,
+      </if>
+      <if test="userOnlineFlag != null">
+        userOnlineFlag,
+      </if>
+      <if test="userB3Key != null">
+        userB3Key,
+      </if>
+      <if test="userB3ClientAddArticleURL != null">
+        userB3ClientAddArticleURL,
+      </if>
+      <if test="userB3ClientUpdateArticleURL != null">
+        userB3ClientUpdateArticleURL,
+      </if>
+      <if test="userB3ClientAddCommentURL != null">
+        userB3ClientAddCommentURL,
+      </if>
+      <if test="userRole != null">
+        userRole,
+      </if>
+      <if test="userArticleCount != null">
+        userArticleCount,
+      </if>
+      <if test="userCommentCount != null">
+        userCommentCount,
+      </if>
+      <if test="userTagCount != null">
+        userTagCount,
+      </if>
+      <if test="userStatus != null">
+        userStatus,
+      </if>
+      <if test="userPoint != null">
+        userPoint,
+      </if>
+      <if test="userUsedPoint != null">
+        userUsedPoint,
+      </if>
+      <if test="userJoinPointRank != null">
+        userJoinPointRank,
+      </if>
+      <if test="userJoinUsedPointRank != null">
+        userJoinUsedPointRank,
+      </if>
+      <if test="userLatestArticleTime != null">
+        userLatestArticleTime,
+      </if>
+      <if test="userLatestCmtTime != null">
+        userLatestCmtTime,
+      </if>
+      <if test="userLatestLoginTime != null">
+        userLatestLoginTime,
+      </if>
+      <if test="userLatestLoginIP != null">
+        userLatestLoginIP,
+      </if>
+      <if test="userAppRole != null">
+        userAppRole,
+      </if>
+      <if test="userCheckinTime != null">
+        userCheckinTime,
+      </if>
+      <if test="userLongestCheckinStreakStart != null">
+        userLongestCheckinStreakStart,
+      </if>
+      <if test="userLongestCheckinStreakEnd != null">
+        userLongestCheckinStreakEnd,
+      </if>
+      <if test="userCurrentCheckinStreakStart != null">
+        userCurrentCheckinStreakStart,
+      </if>
+      <if test="userCurrentCheckinStreakEnd != null">
+        userCurrentCheckinStreakEnd,
+      </if>
+      <if test="userLongestCheckinStreak != null">
+        userLongestCheckinStreak,
+      </if>
+      <if test="userCurrentCheckinStreak != null">
+        userCurrentCheckinStreak,
+      </if>
+      <if test="userSkin != null">
+        userSkin,
+      </if>
+      <if test="userMobileSkin != null">
+        userMobileSkin,
+      </if>
+      <if test="userCountry != null">
+        userCountry,
+      </if>
+      <if test="userProvince != null">
+        userProvince,
+      </if>
+      <if test="userCity != null">
+        userCity,
+      </if>
+      <if test="userUpdateTime != null">
+        userUpdateTime,
+      </if>
+      <if test="userGeoStatus != null">
+        userGeoStatus,
+      </if>
+      <if test="syncWithblodgodClient != null">
+        syncWithblodgodClient,
+      </if>
+      <if test="userCommentViewMode != null">
+        userCommentViewMode,
+      </if>
+      <if test="userUAStatus != null">
+        userUAStatus,
+      </if>
+      <if test="userNotifyStatus != null">
+        userNotifyStatus,
+      </if>
+      <if test="userPointStatus != null">
+        userPointStatus,
+      </if>
+      <if test="userFollowerStatus != null">
+        userFollowerStatus,
+      </if>
+      <if test="userFollowingArticleStatus != null">
+        userFollowingArticleStatus,
+      </if>
+      <if test="userFollowingTagStatus != null">
+        userFollowingTagStatus,
+      </if>
+      <if test="userFollowingUserStatus != null">
+        userFollowingUserStatus,
+      </if>
+      <if test="userCommentStatus != null">
+        userCommentStatus,
+      </if>
+      <if test="userArticleStatus != null">
+        userArticleStatus,
+      </if>
+      <if test="userOnlineStatus != null">
+        userOnlineStatus,
+      </if>
+      <if test="userTimelineStatus != null">
+        userTimelineStatus,
+      </if>
+      <if test="userForgeLinkStatus != null">
+        userForgeLinkStatus,
+      </if>
+      <if test="userListPageSize != null">
+        userListPageSize,
+      </if>
+      <if test="userAvatarViewMode != null">
+        userAvatarViewMode,
+      </if>
+      <if test="userSubMailStatus != null">
+        userSubMailStatus,
+      </if>
+      <if test="userSubMailSendTime != null">
+        userSubMailSendTime,
+      </if>
+      <if test="userKeyboardShortcutsStatus != null">
+        userKeyboardShortcutsStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=INTEGER},
+      </if>
+      <if test="userEmail != null">
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickname != null">
+        #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userTags != null">
+        #{userTags,jdbcType=VARCHAR},
+      </if>
+      <if test="userURL != null">
+        #{userURL,jdbcType=VARCHAR},
+      </if>
+      <if test="userQQ != null">
+        #{userQQ,jdbcType=VARCHAR},
+      </if>
+      <if test="userIntro != null">
+        #{userIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="userAvatarType != null">
+        #{userAvatarType,jdbcType=INTEGER},
+      </if>
+      <if test="userAvatarURL != null">
+        #{userAvatarURL,jdbcType=VARCHAR},
+      </if>
+      <if test="userOnlineFlag != null">
+        #{userOnlineFlag,jdbcType=CHAR},
+      </if>
+      <if test="userB3Key != null">
+        #{userB3Key,jdbcType=VARCHAR},
+      </if>
+      <if test="userB3ClientAddArticleURL != null">
+        #{userB3ClientAddArticleURL,jdbcType=VARCHAR},
+      </if>
+      <if test="userB3ClientUpdateArticleURL != null">
+        #{userB3ClientUpdateArticleURL,jdbcType=VARCHAR},
+      </if>
+      <if test="userB3ClientAddCommentURL != null">
+        #{userB3ClientAddCommentURL,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null">
+        #{userRole,jdbcType=VARCHAR},
+      </if>
+      <if test="userArticleCount != null">
+        #{userArticleCount,jdbcType=INTEGER},
+      </if>
+      <if test="userCommentCount != null">
+        #{userCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="userTagCount != null">
+        #{userTagCount,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userPoint != null">
+        #{userPoint,jdbcType=INTEGER},
+      </if>
+      <if test="userUsedPoint != null">
+        #{userUsedPoint,jdbcType=INTEGER},
+      </if>
+      <if test="userJoinPointRank != null">
+        #{userJoinPointRank,jdbcType=INTEGER},
+      </if>
+      <if test="userJoinUsedPointRank != null">
+        #{userJoinUsedPointRank,jdbcType=INTEGER},
+      </if>
+      <if test="userLatestArticleTime != null">
+        #{userLatestArticleTime,jdbcType=BIGINT},
+      </if>
+      <if test="userLatestCmtTime != null">
+        #{userLatestCmtTime,jdbcType=BIGINT},
+      </if>
+      <if test="userLatestLoginTime != null">
+        #{userLatestLoginTime,jdbcType=BIGINT},
+      </if>
+      <if test="userLatestLoginIP != null">
+        #{userLatestLoginIP,jdbcType=VARCHAR},
+      </if>
+      <if test="userAppRole != null">
+        #{userAppRole,jdbcType=INTEGER},
+      </if>
+      <if test="userCheckinTime != null">
+        #{userCheckinTime,jdbcType=BIGINT},
+      </if>
+      <if test="userLongestCheckinStreakStart != null">
+        #{userLongestCheckinStreakStart,jdbcType=INTEGER},
+      </if>
+      <if test="userLongestCheckinStreakEnd != null">
+        #{userLongestCheckinStreakEnd,jdbcType=INTEGER},
+      </if>
+      <if test="userCurrentCheckinStreakStart != null">
+        #{userCurrentCheckinStreakStart,jdbcType=INTEGER},
+      </if>
+      <if test="userCurrentCheckinStreakEnd != null">
+        #{userCurrentCheckinStreakEnd,jdbcType=INTEGER},
+      </if>
+      <if test="userLongestCheckinStreak != null">
+        #{userLongestCheckinStreak,jdbcType=INTEGER},
+      </if>
+      <if test="userCurrentCheckinStreak != null">
+        #{userCurrentCheckinStreak,jdbcType=INTEGER},
+      </if>
+      <if test="userSkin != null">
+        #{userSkin,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobileSkin != null">
+        #{userMobileSkin,jdbcType=VARCHAR},
+      </if>
+      <if test="userCountry != null">
+        #{userCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="userProvince != null">
+        #{userProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="userCity != null">
+        #{userCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userUpdateTime != null">
+        #{userUpdateTime,jdbcType=BIGINT},
+      </if>
+      <if test="userGeoStatus != null">
+        #{userGeoStatus,jdbcType=INTEGER},
+      </if>
+      <if test="syncWithblodgodClient != null">
+        #{syncWithblodgodClient,jdbcType=CHAR},
+      </if>
+      <if test="userCommentViewMode != null">
+        #{userCommentViewMode,jdbcType=INTEGER},
+      </if>
+      <if test="userUAStatus != null">
+        #{userUAStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userNotifyStatus != null">
+        #{userNotifyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userPointStatus != null">
+        #{userPointStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userFollowerStatus != null">
+        #{userFollowerStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userFollowingArticleStatus != null">
+        #{userFollowingArticleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userFollowingTagStatus != null">
+        #{userFollowingTagStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userFollowingUserStatus != null">
+        #{userFollowingUserStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userCommentStatus != null">
+        #{userCommentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userArticleStatus != null">
+        #{userArticleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userOnlineStatus != null">
+        #{userOnlineStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userTimelineStatus != null">
+        #{userTimelineStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userForgeLinkStatus != null">
+        #{userForgeLinkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userListPageSize != null">
+        #{userListPageSize,jdbcType=INTEGER},
+      </if>
+      <if test="userAvatarViewMode != null">
+        #{userAvatarViewMode,jdbcType=INTEGER},
+      </if>
+      <if test="userSubMailStatus != null">
+        #{userSubMailStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userSubMailSendTime != null">
+        #{userSubMailSendTime,jdbcType=BIGINT},
+      </if>
+      <if test="userKeyboardShortcutsStatus != null">
+        #{userKeyboardShortcutsStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.BGUser">
+    update blodgod_user
+    <set>
+      <if test="userNo != null">
+        userNo = #{userNo,jdbcType=INTEGER},
+      </if>
+      <if test="userEmail != null">
+        userEmail = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        userPassword = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userNickname != null">
+        userNickname = #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userTags != null">
+        userTags = #{userTags,jdbcType=VARCHAR},
+      </if>
+      <if test="userURL != null">
+        userURL = #{userURL,jdbcType=VARCHAR},
+      </if>
+      <if test="userQQ != null">
+        userQQ = #{userQQ,jdbcType=VARCHAR},
+      </if>
+      <if test="userIntro != null">
+        userIntro = #{userIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="userAvatarType != null">
+        userAvatarType = #{userAvatarType,jdbcType=INTEGER},
+      </if>
+      <if test="userAvatarURL != null">
+        userAvatarURL = #{userAvatarURL,jdbcType=VARCHAR},
+      </if>
+      <if test="userOnlineFlag != null">
+        userOnlineFlag = #{userOnlineFlag,jdbcType=CHAR},
+      </if>
+      <if test="userB3Key != null">
+        userB3Key = #{userB3Key,jdbcType=VARCHAR},
+      </if>
+      <if test="userB3ClientAddArticleURL != null">
+        userB3ClientAddArticleURL = #{userB3ClientAddArticleURL,jdbcType=VARCHAR},
+      </if>
+      <if test="userB3ClientUpdateArticleURL != null">
+        userB3ClientUpdateArticleURL = #{userB3ClientUpdateArticleURL,jdbcType=VARCHAR},
+      </if>
+      <if test="userB3ClientAddCommentURL != null">
+        userB3ClientAddCommentURL = #{userB3ClientAddCommentURL,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null">
+        userRole = #{userRole,jdbcType=VARCHAR},
+      </if>
+      <if test="userArticleCount != null">
+        userArticleCount = #{userArticleCount,jdbcType=INTEGER},
+      </if>
+      <if test="userCommentCount != null">
+        userCommentCount = #{userCommentCount,jdbcType=INTEGER},
+      </if>
+      <if test="userTagCount != null">
+        userTagCount = #{userTagCount,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null">
+        userStatus = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userPoint != null">
+        userPoint = #{userPoint,jdbcType=INTEGER},
+      </if>
+      <if test="userUsedPoint != null">
+        userUsedPoint = #{userUsedPoint,jdbcType=INTEGER},
+      </if>
+      <if test="userJoinPointRank != null">
+        userJoinPointRank = #{userJoinPointRank,jdbcType=INTEGER},
+      </if>
+      <if test="userJoinUsedPointRank != null">
+        userJoinUsedPointRank = #{userJoinUsedPointRank,jdbcType=INTEGER},
+      </if>
+      <if test="userLatestArticleTime != null">
+        userLatestArticleTime = #{userLatestArticleTime,jdbcType=BIGINT},
+      </if>
+      <if test="userLatestCmtTime != null">
+        userLatestCmtTime = #{userLatestCmtTime,jdbcType=BIGINT},
+      </if>
+      <if test="userLatestLoginTime != null">
+        userLatestLoginTime = #{userLatestLoginTime,jdbcType=BIGINT},
+      </if>
+      <if test="userLatestLoginIP != null">
+        userLatestLoginIP = #{userLatestLoginIP,jdbcType=VARCHAR},
+      </if>
+      <if test="userAppRole != null">
+        userAppRole = #{userAppRole,jdbcType=INTEGER},
+      </if>
+      <if test="userCheckinTime != null">
+        userCheckinTime = #{userCheckinTime,jdbcType=BIGINT},
+      </if>
+      <if test="userLongestCheckinStreakStart != null">
+        userLongestCheckinStreakStart = #{userLongestCheckinStreakStart,jdbcType=INTEGER},
+      </if>
+      <if test="userLongestCheckinStreakEnd != null">
+        userLongestCheckinStreakEnd = #{userLongestCheckinStreakEnd,jdbcType=INTEGER},
+      </if>
+      <if test="userCurrentCheckinStreakStart != null">
+        userCurrentCheckinStreakStart = #{userCurrentCheckinStreakStart,jdbcType=INTEGER},
+      </if>
+      <if test="userCurrentCheckinStreakEnd != null">
+        userCurrentCheckinStreakEnd = #{userCurrentCheckinStreakEnd,jdbcType=INTEGER},
+      </if>
+      <if test="userLongestCheckinStreak != null">
+        userLongestCheckinStreak = #{userLongestCheckinStreak,jdbcType=INTEGER},
+      </if>
+      <if test="userCurrentCheckinStreak != null">
+        userCurrentCheckinStreak = #{userCurrentCheckinStreak,jdbcType=INTEGER},
+      </if>
+      <if test="userSkin != null">
+        userSkin = #{userSkin,jdbcType=VARCHAR},
+      </if>
+      <if test="userMobileSkin != null">
+        userMobileSkin = #{userMobileSkin,jdbcType=VARCHAR},
+      </if>
+      <if test="userCountry != null">
+        userCountry = #{userCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="userProvince != null">
+        userProvince = #{userProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="userCity != null">
+        userCity = #{userCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userUpdateTime != null">
+        userUpdateTime = #{userUpdateTime,jdbcType=BIGINT},
+      </if>
+      <if test="userGeoStatus != null">
+        userGeoStatus = #{userGeoStatus,jdbcType=INTEGER},
+      </if>
+      <if test="syncWithblodgodClient != null">
+        syncWithblodgodClient = #{syncWithblodgodClient,jdbcType=CHAR},
+      </if>
+      <if test="userCommentViewMode != null">
+        userCommentViewMode = #{userCommentViewMode,jdbcType=INTEGER},
+      </if>
+      <if test="userUAStatus != null">
+        userUAStatus = #{userUAStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userNotifyStatus != null">
+        userNotifyStatus = #{userNotifyStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userPointStatus != null">
+        userPointStatus = #{userPointStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userFollowerStatus != null">
+        userFollowerStatus = #{userFollowerStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userFollowingArticleStatus != null">
+        userFollowingArticleStatus = #{userFollowingArticleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userFollowingTagStatus != null">
+        userFollowingTagStatus = #{userFollowingTagStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userFollowingUserStatus != null">
+        userFollowingUserStatus = #{userFollowingUserStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userCommentStatus != null">
+        userCommentStatus = #{userCommentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userArticleStatus != null">
+        userArticleStatus = #{userArticleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userOnlineStatus != null">
+        userOnlineStatus = #{userOnlineStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userTimelineStatus != null">
+        userTimelineStatus = #{userTimelineStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userForgeLinkStatus != null">
+        userForgeLinkStatus = #{userForgeLinkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userListPageSize != null">
+        userListPageSize = #{userListPageSize,jdbcType=INTEGER},
+      </if>
+      <if test="userAvatarViewMode != null">
+        userAvatarViewMode = #{userAvatarViewMode,jdbcType=INTEGER},
+      </if>
+      <if test="userSubMailStatus != null">
+        userSubMailStatus = #{userSubMailStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userSubMailSendTime != null">
+        userSubMailSendTime = #{userSubMailSendTime,jdbcType=BIGINT},
+      </if>
+      <if test="userKeyboardShortcutsStatus != null">
+        userKeyboardShortcutsStatus = #{userKeyboardShortcutsStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.BGUser">
+    update blodgod_user
+    set userNo = #{userNo,jdbcType=INTEGER},
+      userEmail = #{userEmail,jdbcType=VARCHAR},
+      userName = #{userName,jdbcType=VARCHAR},
+      userPassword = #{userPassword,jdbcType=VARCHAR},
+      userNickname = #{userNickname,jdbcType=VARCHAR},
+      userTags = #{userTags,jdbcType=VARCHAR},
+      userURL = #{userURL,jdbcType=VARCHAR},
+      userQQ = #{userQQ,jdbcType=VARCHAR},
+      userIntro = #{userIntro,jdbcType=VARCHAR},
+      userAvatarType = #{userAvatarType,jdbcType=INTEGER},
+      userAvatarURL = #{userAvatarURL,jdbcType=VARCHAR},
+      userOnlineFlag = #{userOnlineFlag,jdbcType=CHAR},
+      userB3Key = #{userB3Key,jdbcType=VARCHAR},
+      userB3ClientAddArticleURL = #{userB3ClientAddArticleURL,jdbcType=VARCHAR},
+      userB3ClientUpdateArticleURL = #{userB3ClientUpdateArticleURL,jdbcType=VARCHAR},
+      userB3ClientAddCommentURL = #{userB3ClientAddCommentURL,jdbcType=VARCHAR},
+      userRole = #{userRole,jdbcType=VARCHAR},
+      userArticleCount = #{userArticleCount,jdbcType=INTEGER},
+      userCommentCount = #{userCommentCount,jdbcType=INTEGER},
+      userTagCount = #{userTagCount,jdbcType=INTEGER},
+      userStatus = #{userStatus,jdbcType=INTEGER},
+      userPoint = #{userPoint,jdbcType=INTEGER},
+      userUsedPoint = #{userUsedPoint,jdbcType=INTEGER},
+      userJoinPointRank = #{userJoinPointRank,jdbcType=INTEGER},
+      userJoinUsedPointRank = #{userJoinUsedPointRank,jdbcType=INTEGER},
+      userLatestArticleTime = #{userLatestArticleTime,jdbcType=BIGINT},
+      userLatestCmtTime = #{userLatestCmtTime,jdbcType=BIGINT},
+      userLatestLoginTime = #{userLatestLoginTime,jdbcType=BIGINT},
+      userLatestLoginIP = #{userLatestLoginIP,jdbcType=VARCHAR},
+      userAppRole = #{userAppRole,jdbcType=INTEGER},
+      userCheckinTime = #{userCheckinTime,jdbcType=BIGINT},
+      userLongestCheckinStreakStart = #{userLongestCheckinStreakStart,jdbcType=INTEGER},
+      userLongestCheckinStreakEnd = #{userLongestCheckinStreakEnd,jdbcType=INTEGER},
+      userCurrentCheckinStreakStart = #{userCurrentCheckinStreakStart,jdbcType=INTEGER},
+      userCurrentCheckinStreakEnd = #{userCurrentCheckinStreakEnd,jdbcType=INTEGER},
+      userLongestCheckinStreak = #{userLongestCheckinStreak,jdbcType=INTEGER},
+      userCurrentCheckinStreak = #{userCurrentCheckinStreak,jdbcType=INTEGER},
+      userSkin = #{userSkin,jdbcType=VARCHAR},
+      userMobileSkin = #{userMobileSkin,jdbcType=VARCHAR},
+      userCountry = #{userCountry,jdbcType=VARCHAR},
+      userProvince = #{userProvince,jdbcType=VARCHAR},
+      userCity = #{userCity,jdbcType=VARCHAR},
+      userUpdateTime = #{userUpdateTime,jdbcType=BIGINT},
+      userGeoStatus = #{userGeoStatus,jdbcType=INTEGER},
+      syncWithblodgodClient = #{syncWithblodgodClient,jdbcType=CHAR},
+      userCommentViewMode = #{userCommentViewMode,jdbcType=INTEGER},
+      userUAStatus = #{userUAStatus,jdbcType=INTEGER},
+      userNotifyStatus = #{userNotifyStatus,jdbcType=INTEGER},
+      userPointStatus = #{userPointStatus,jdbcType=INTEGER},
+      userFollowerStatus = #{userFollowerStatus,jdbcType=INTEGER},
+      userFollowingArticleStatus = #{userFollowingArticleStatus,jdbcType=INTEGER},
+      userFollowingTagStatus = #{userFollowingTagStatus,jdbcType=INTEGER},
+      userFollowingUserStatus = #{userFollowingUserStatus,jdbcType=INTEGER},
+      userCommentStatus = #{userCommentStatus,jdbcType=INTEGER},
+      userArticleStatus = #{userArticleStatus,jdbcType=INTEGER},
+      userOnlineStatus = #{userOnlineStatus,jdbcType=INTEGER},
+      userTimelineStatus = #{userTimelineStatus,jdbcType=INTEGER},
+      userForgeLinkStatus = #{userForgeLinkStatus,jdbcType=INTEGER},
+      userListPageSize = #{userListPageSize,jdbcType=INTEGER},
+      userAvatarViewMode = #{userAvatarViewMode,jdbcType=INTEGER},
+      userSubMailStatus = #{userSubMailStatus,jdbcType=INTEGER},
+      userSubMailSendTime = #{userSubMailSendTime,jdbcType=BIGINT},
+      userKeyboardShortcutsStatus = #{userKeyboardShortcutsStatus,jdbcType=INTEGER}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>
