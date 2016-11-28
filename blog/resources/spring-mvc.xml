@@ -22,7 +22,7 @@
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	<mvc:annotation-driven conversion-service="conversionService" />
 	<!-- 静态资源映射 -->
-	<mvc:resources mapping="/static/**" location="/static/"
+	<mvc:resources mapping="/web/static/**" location="/web//static/"
 		cache-period="31536000" />
 
 	<bean id="conversionService"

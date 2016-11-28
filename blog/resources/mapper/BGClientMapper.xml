@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGClientMapper">
-  <resultMap id="BaseResultMap" type="model.BGClient">
+<mapper namespace="com.blackblod.web.mapper.BGClientMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGClient">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="clientName" jdbcType="VARCHAR" property="clientName" />
     <result column="clientVersion" jdbcType="VARCHAR" property="clientVersion" />
@@ -25,7 +25,7 @@
     delete from blodgod_client
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGClient">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGClient">
     insert into blodgod_client (oId, clientName, clientVersion, 
       clientHost, clientRuntimeEnv, clientLatestAddArticleTime, 
       clientLatestAddCommentTime, clientAdminEmail
@@ -35,7 +35,7 @@
       #{clientLatestAddCommentTime,jdbcType=BIGINT}, #{clientAdminEmail,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="model.BGClient">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGClient">
     insert into blodgod_client
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -90,7 +90,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGClient">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGClient">
     update blodgod_client
     <set>
       <if test="clientName != null">
@@ -117,7 +117,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGClient">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGClient">
     update blodgod_client
     set clientName = #{clientName,jdbcType=VARCHAR},
       clientVersion = #{clientVersion,jdbcType=VARCHAR},

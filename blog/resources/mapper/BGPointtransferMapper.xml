@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGPointtransferMapper">
-  <resultMap id="BaseResultMap" type="model.BGPointtransfer">
+<mapper namespace="com.blackblod.web.mapper.BGPointtransferMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGPointtransfer">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="fromId" jdbcType="VARCHAR" property="fromId" />
     <result column="toId" jdbcType="VARCHAR" property="toId" />
@@ -25,7 +25,7 @@
     delete from blodgod_pointtransfer
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGPointtransfer">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGPointtransfer">
     insert into blodgod_pointtransfer (oId, fromId, toId, 
       sum, fromBalance, toBalance, 
       time, type, dataId)
@@ -33,7 +33,7 @@
       #{sum,jdbcType=INTEGER}, #{fromBalance,jdbcType=INTEGER}, #{toBalance,jdbcType=INTEGER}, 
       #{time,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{dataId,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGPointtransfer">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGPointtransfer">
     insert into blodgod_pointtransfer
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -94,7 +94,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGPointtransfer">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGPointtransfer">
     update blodgod_pointtransfer
     <set>
       <if test="fromId != null">
@@ -124,7 +124,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGPointtransfer">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGPointtransfer">
     update blodgod_pointtransfer
     set fromId = #{fromId,jdbcType=VARCHAR},
       toId = #{toId,jdbcType=VARCHAR},

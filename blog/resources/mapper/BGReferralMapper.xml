@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGReferralMapper">
-  <resultMap id="BaseResultMap" type="model.BGReferral">
+<mapper namespace="com.blackblod.web.mapper.BGReferralMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGReferral">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="referralUser" jdbcType="VARCHAR" property="referralUser" />
     <result column="referralDataId" jdbcType="VARCHAR" property="referralDataId" />
@@ -25,7 +25,7 @@
     delete from blodgod_referral
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGReferral">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGReferral">
     insert into blodgod_referral (oId, referralUser, referralDataId, 
       referralType, referralIP, referralClick, 
       referralUserHasPoint, referralAuthorHasPoint)
@@ -33,7 +33,7 @@
       #{referralType,jdbcType=INTEGER}, #{referralIP,jdbcType=VARCHAR}, #{referralClick,jdbcType=INTEGER}, 
       #{referralUserHasPoint,jdbcType=CHAR}, #{referralAuthorHasPoint,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGReferral">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGReferral">
     insert into blodgod_referral
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -88,7 +88,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGReferral">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGReferral">
     update blodgod_referral
     <set>
       <if test="referralUser != null">
@@ -115,7 +115,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGReferral">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGReferral">
     update blodgod_referral
     set referralUser = #{referralUser,jdbcType=VARCHAR},
       referralDataId = #{referralDataId,jdbcType=VARCHAR},

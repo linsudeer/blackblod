@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGLivenessMapper">
-  <resultMap id="BaseResultMap" type="model.BGLiveness">
+<mapper namespace="com.blackblod.web.mapper.BGLivenessMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGLiveness">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="livenessUserId" jdbcType="VARCHAR" property="livenessUserId" />
     <result column="livenessDate" jdbcType="VARCHAR" property="livenessDate" />
@@ -28,7 +28,7 @@
     delete from blodgod_liveness
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGLiveness">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGLiveness">
     insert into blodgod_liveness (oId, livenessUserId, livenessDate, 
       livenessPoint, livenessArticle, livenessComment, 
       livenessActivity, livenessThank, livenessVote, 
@@ -38,7 +38,7 @@
       #{livenessActivity,jdbcType=INTEGER}, #{livenessThank,jdbcType=INTEGER}, #{livenessVote,jdbcType=INTEGER}, 
       #{livenessReward,jdbcType=INTEGER}, #{livenessPV,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGLiveness">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGLiveness">
     insert into blodgod_liveness
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGLiveness">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGLiveness">
     update blodgod_liveness
     <set>
       <if test="livenessUserId != null">
@@ -147,7 +147,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGLiveness">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGLiveness">
     update blodgod_liveness
     set livenessUserId = #{livenessUserId,jdbcType=VARCHAR},
       livenessDate = #{livenessDate,jdbcType=VARCHAR},

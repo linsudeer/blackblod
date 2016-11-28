@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGEmotionMapper">
-  <resultMap id="BaseResultMap" type="model.BGEmotion">
+<mapper namespace="com.blackblod.web.mapper.BGEmotionMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGEmotion">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="emotionUserId" jdbcType="VARCHAR" property="emotionUserId" />
     <result column="emotionContent" jdbcType="VARCHAR" property="emotionContent" />
@@ -21,13 +21,13 @@
     delete from blodgod_emotion
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGEmotion">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGEmotion">
     insert into blodgod_emotion (oId, emotionUserId, emotionContent, 
       emotionSort, emotionType)
     values (#{oId,jdbcType=VARCHAR}, #{emotionUserId,jdbcType=VARCHAR}, #{emotionContent,jdbcType=VARCHAR}, 
       #{emotionSort,jdbcType=INTEGER}, #{emotionType,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGEmotion">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGEmotion">
     insert into blodgod_emotion
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGEmotion">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGEmotion">
     update blodgod_emotion
     <set>
       <if test="emotionUserId != null">
@@ -82,7 +82,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGEmotion">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGEmotion">
     update blodgod_emotion
     set emotionUserId = #{emotionUserId,jdbcType=VARCHAR},
       emotionContent = #{emotionContent,jdbcType=VARCHAR},

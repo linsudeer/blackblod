@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGTagUserLinkMapper">
-  <resultMap id="BaseResultMap" type="model.BGTagUserLink">
+<mapper namespace="com.blackblod.web.mapper.BGTagUserLinkMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGTagUserLink">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="linkId" jdbcType="VARCHAR" property="linkId" />
     <result column="tagId" jdbcType="VARCHAR" property="tagId" />
@@ -21,13 +21,13 @@
     delete from blodgod_tag_user_link
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGTagUserLink">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGTagUserLink">
     insert into blodgod_tag_user_link (oId, linkId, tagId, 
       userId, linkScore)
     values (#{oId,jdbcType=VARCHAR}, #{linkId,jdbcType=VARCHAR}, #{tagId,jdbcType=VARCHAR}, 
       #{userId,jdbcType=VARCHAR}, #{linkScore,jdbcType=DOUBLE})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGTagUserLink">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGTagUserLink">
     insert into blodgod_tag_user_link
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGTagUserLink">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGTagUserLink">
     update blodgod_tag_user_link
     <set>
       <if test="linkId != null">
@@ -82,7 +82,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGTagUserLink">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGTagUserLink">
     update blodgod_tag_user_link
     set linkId = #{linkId,jdbcType=VARCHAR},
       tagId = #{tagId,jdbcType=VARCHAR},

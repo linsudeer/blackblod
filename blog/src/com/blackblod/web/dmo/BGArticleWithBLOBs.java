@@ -1,7 +1,10 @@
 package com.blackblod.web.dmo;
 
 public class BGArticleWithBLOBs extends BGArticle {
-    private String articleContent;
+	
+	private static final long serialVersionUID = 1L;
+
+	private String articleContent;
 
     private String articleRewardContent;
 

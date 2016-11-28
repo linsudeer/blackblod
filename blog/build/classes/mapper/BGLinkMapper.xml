@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGLinkMapper">
-  <resultMap id="BaseResultMap" type="model.BGLink">
+<mapper namespace="com.blackblod.web.mapper.BGLinkMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGLink">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="linkType" jdbcType="INTEGER" property="linkType" />
     <result column="linkSubmitCnt" jdbcType="INTEGER" property="linkSubmitCnt" />
@@ -11,7 +11,7 @@
     <result column="linkBaiduRefCnt" jdbcType="INTEGER" property="linkBaiduRefCnt" />
     <result column="linkScore" jdbcType="DOUBLE" property="linkScore" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="model.BGLinkWithBLOBs">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.BGLinkWithBLOBs">
     <result column="linkAddr" jdbcType="LONGVARCHAR" property="linkAddr" />
     <result column="linkTitle" jdbcType="LONGVARCHAR" property="linkTitle" />
   </resultMap>
@@ -34,7 +34,7 @@
     delete from blodgod_link
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGLinkWithBLOBs">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGLinkWithBLOBs">
     insert into blodgod_link (oId, linkType, linkSubmitCnt, 
       linkClickCnt, linkGoodCnt, linkBadCnt, 
       linkBaiduRefCnt, linkScore, linkAddr, 
@@ -44,7 +44,7 @@
       #{linkBaiduRefCnt,jdbcType=INTEGER}, #{linkScore,jdbcType=DOUBLE}, #{linkAddr,jdbcType=LONGVARCHAR}, 
       #{linkTitle,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGLinkWithBLOBs">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGLinkWithBLOBs">
     insert into blodgod_link
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGLinkWithBLOBs">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGLinkWithBLOBs">
     update blodgod_link
     <set>
       <if test="linkType != null">
@@ -144,7 +144,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="model.BGLinkWithBLOBs">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.blackblod.web.dmo.BGLinkWithBLOBs">
     update blodgod_link
     set linkType = #{linkType,jdbcType=INTEGER},
       linkSubmitCnt = #{linkSubmitCnt,jdbcType=INTEGER},
@@ -157,7 +157,7 @@
       linkTitle = #{linkTitle,jdbcType=LONGVARCHAR}
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGLink">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGLink">
     update blodgod_link
     set linkType = #{linkType,jdbcType=INTEGER},
       linkSubmitCnt = #{linkSubmitCnt,jdbcType=INTEGER},

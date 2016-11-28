@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGTagMapper">
-  <resultMap id="BaseResultMap" type="model.BGTag">
+<mapper namespace="com.blackblod.web.mapper.BGTagMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGTag">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="tagReferenceCount" jdbcType="INTEGER" property="tagReferenceCount" />
     <result column="tagCommentCount" jdbcType="INTEGER" property="tagCommentCount" />
@@ -17,7 +17,7 @@
     <result column="tagSeoKeywords" jdbcType="VARCHAR" property="tagSeoKeywords" />
     <result column="tagRandomDouble" jdbcType="DOUBLE" property="tagRandomDouble" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="model.BGTagWithBLOBs">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.BGTagWithBLOBs">
     <result column="tagDescription" jdbcType="LONGVARCHAR" property="tagDescription" />
     <result column="tagCSS" jdbcType="LONGVARCHAR" property="tagCSS" />
     <result column="tagSeoDesc" jdbcType="LONGVARCHAR" property="tagSeoDesc" />
@@ -42,7 +42,7 @@
     delete from blodgod_tag
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGTagWithBLOBs">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGTagWithBLOBs">
     insert into blodgod_tag (oId, tagReferenceCount, tagCommentCount, 
       tagFollowerCount, tagLinkCount, tagTitle, 
       tagURI, tagIconPath, tagStatus, 
@@ -56,7 +56,7 @@
       #{tagSeoKeywords,jdbcType=VARCHAR}, #{tagRandomDouble,jdbcType=DOUBLE}, #{tagDescription,jdbcType=LONGVARCHAR}, 
       #{tagCSS,jdbcType=LONGVARCHAR}, #{tagSeoDesc,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGTagWithBLOBs">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGTagWithBLOBs">
     insert into blodgod_tag
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -165,7 +165,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGTagWithBLOBs">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGTagWithBLOBs">
     update blodgod_tag
     <set>
       <if test="tagReferenceCount != null">
@@ -219,7 +219,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="model.BGTagWithBLOBs">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.blackblod.web.dmo.BGTagWithBLOBs">
     update blodgod_tag
     set tagReferenceCount = #{tagReferenceCount,jdbcType=INTEGER},
       tagCommentCount = #{tagCommentCount,jdbcType=INTEGER},
@@ -239,7 +239,7 @@
       tagSeoDesc = #{tagSeoDesc,jdbcType=LONGVARCHAR}
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGTag">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGTag">
     update blodgod_tag
     set tagReferenceCount = #{tagReferenceCount,jdbcType=INTEGER},
       tagCommentCount = #{tagCommentCount,jdbcType=INTEGER},

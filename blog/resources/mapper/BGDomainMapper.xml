@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGDomainMapper">
-  <resultMap id="BaseResultMap" type="model.BGDomain">
+<mapper namespace="com.blackblod.web.mapper.BGDomainMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGDomain">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="domainTitle" jdbcType="VARCHAR" property="domainTitle" />
     <result column="domainURI" jdbcType="VARCHAR" property="domainURI" />
@@ -12,7 +12,7 @@
     <result column="domainSeoTitle" jdbcType="VARCHAR" property="domainSeoTitle" />
     <result column="domainSeoKeywords" jdbcType="VARCHAR" property="domainSeoKeywords" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="model.BGDomainWithBLOBs">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.BGDomainWithBLOBs">
     <result column="domainDescription" jdbcType="LONGVARCHAR" property="domainDescription" />
     <result column="domainIconPath" jdbcType="LONGVARCHAR" property="domainIconPath" />
     <result column="domainCSS" jdbcType="LONGVARCHAR" property="domainCSS" />
@@ -37,7 +37,7 @@
     delete from blodgod_domain
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGDomainWithBLOBs">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGDomainWithBLOBs">
     insert into blodgod_domain (oId, domainTitle, domainURI, 
       domainType, domainSort, domainTagCnt, 
       domainStatus, domainSeoTitle, domainSeoKeywords, 
@@ -49,7 +49,7 @@
       #{domainDescription,jdbcType=LONGVARCHAR}, #{domainIconPath,jdbcType=LONGVARCHAR}, 
       #{domainCSS,jdbcType=LONGVARCHAR}, #{domainSeoDesc,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGDomainWithBLOBs">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGDomainWithBLOBs">
     insert into blodgod_domain
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -134,7 +134,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGDomainWithBLOBs">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGDomainWithBLOBs">
     update blodgod_domain
     <set>
       <if test="domainTitle != null">
@@ -176,7 +176,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="model.BGDomainWithBLOBs">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.blackblod.web.dmo.BGDomainWithBLOBs">
     update blodgod_domain
     set domainTitle = #{domainTitle,jdbcType=VARCHAR},
       domainURI = #{domainURI,jdbcType=VARCHAR},
@@ -192,7 +192,7 @@
       domainSeoDesc = #{domainSeoDesc,jdbcType=LONGVARCHAR}
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGDomain">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGDomain">
     update blodgod_domain
     set domainTitle = #{domainTitle,jdbcType=VARCHAR},
       domainURI = #{domainURI,jdbcType=VARCHAR},

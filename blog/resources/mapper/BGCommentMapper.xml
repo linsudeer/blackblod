@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGCommentMapper">
-  <resultMap id="BaseResultMap" type="model.BGComment">
+<mapper namespace="com.blackblod.web.mapper.BGCommentMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGComment">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="clientCommentId" jdbcType="VARCHAR" property="clientCommentId" />
     <result column="commentCreateTime" jdbcType="BIGINT" property="commentCreateTime" />
@@ -19,7 +19,7 @@
     <result column="commentScore" jdbcType="DOUBLE" property="commentScore" />
     <result column="commentReplyCnt" jdbcType="INTEGER" property="commentReplyCnt" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="model.BGComment">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.BGComment">
     <result column="commentContent" jdbcType="LONGVARCHAR" property="commentContent" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -42,7 +42,7 @@
     delete from blodgod_comment
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGComment">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGComment">
     insert into blodgod_comment (oId, clientCommentId, commentCreateTime, 
       commentAuthorEmail, commentAuthorId, commentOnArticleId, 
       commentSharpURL, commentOriginalCommentId, 
@@ -58,7 +58,7 @@
       #{commentScore,jdbcType=DOUBLE}, #{commentReplyCnt,jdbcType=INTEGER}, #{commentContent,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="model.BGComment">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGComment">
     insert into blodgod_comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -167,7 +167,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGComment">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGComment">
     update blodgod_comment
     <set>
       <if test="clientCommentId != null">
@@ -221,7 +221,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="model.BGComment">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.blackblod.web.dmo.BGComment">
     update blodgod_comment
     set clientCommentId = #{clientCommentId,jdbcType=VARCHAR},
       commentCreateTime = #{commentCreateTime,jdbcType=BIGINT},
@@ -241,7 +241,7 @@
       commentContent = #{commentContent,jdbcType=LONGVARCHAR}
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGComment">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGComment">
     update blodgod_comment
     set clientCommentId = #{clientCommentId,jdbcType=VARCHAR},
       commentCreateTime = #{commentCreateTime,jdbcType=BIGINT},

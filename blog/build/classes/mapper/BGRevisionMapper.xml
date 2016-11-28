@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGRevisionMapper">
-  <resultMap id="BaseResultMap" type="model.BGRevision">
+<mapper namespace="com.blackblod.web.mapper.BGRevisionMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGRevision">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="revisionDataType" jdbcType="INTEGER" property="revisionDataType" />
     <result column="revisionDataId" jdbcType="VARCHAR" property="revisionDataId" />
     <result column="revisionAuthorId" jdbcType="VARCHAR" property="revisionAuthorId" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="model.BGRevision">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.BGRevision">
     <result column="revisionData" jdbcType="LONGVARCHAR" property="revisionData" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -28,13 +28,13 @@
     delete from blodgod_revision
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGRevision">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGRevision">
     insert into blodgod_revision (oId, revisionDataType, revisionDataId, 
       revisionAuthorId, revisionData)
     values (#{oId,jdbcType=VARCHAR}, #{revisionDataType,jdbcType=INTEGER}, #{revisionDataId,jdbcType=VARCHAR}, 
       #{revisionAuthorId,jdbcType=VARCHAR}, #{revisionData,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGRevision">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGRevision">
     insert into blodgod_revision
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -71,7 +71,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGRevision">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGRevision">
     update blodgod_revision
     <set>
       <if test="revisionDataType != null">
@@ -89,7 +89,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="model.BGRevision">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.blackblod.web.dmo.BGRevision">
     update blodgod_revision
     set revisionDataType = #{revisionDataType,jdbcType=INTEGER},
       revisionDataId = #{revisionDataId,jdbcType=VARCHAR},
@@ -97,7 +97,7 @@
       revisionData = #{revisionData,jdbcType=LONGVARCHAR}
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGRevision">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGRevision">
     update blodgod_revision
     set revisionDataType = #{revisionDataType,jdbcType=INTEGER},
       revisionDataId = #{revisionDataId,jdbcType=VARCHAR},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGFollowMapper">
-  <resultMap id="BaseResultMap" type="model.BGFollow">
+<mapper namespace="com.blackblod.web.mapper.BGFollowMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGFollow">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="followerId" jdbcType="VARCHAR" property="followerId" />
     <result column="followingId" jdbcType="VARCHAR" property="followingId" />
@@ -20,13 +20,13 @@
     delete from blodgod_follow
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGFollow">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGFollow">
     insert into blodgod_follow (oId, followerId, followingId, 
       followingType)
     values (#{oId,jdbcType=VARCHAR}, #{followerId,jdbcType=VARCHAR}, #{followingId,jdbcType=VARCHAR}, 
       #{followingType,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGFollow">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGFollow">
     insert into blodgod_follow
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGFollow">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGFollow">
     update blodgod_follow
     <set>
       <if test="followerId != null">
@@ -72,7 +72,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGFollow">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGFollow">
     update blodgod_follow
     set followerId = #{followerId,jdbcType=VARCHAR},
       followingId = #{followingId,jdbcType=VARCHAR},

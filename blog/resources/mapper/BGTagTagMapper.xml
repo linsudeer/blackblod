@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGTagTagMapper">
-  <resultMap id="BaseResultMap" type="model.BGTagTag">
+<mapper namespace="com.blackblod.web.mapper.BGTagTagMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGTagTag">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="tag1_oId" jdbcType="VARCHAR" property="tag1_oId" />
     <result column="tag2_oId" jdbcType="VARCHAR" property="tag2_oId" />
@@ -20,13 +20,13 @@
     delete from blodgod_tag_tag
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGTagTag">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGTagTag">
     insert into blodgod_tag_tag (oId, tag1_oId, tag2_oId, 
       weight)
     values (#{oId,jdbcType=VARCHAR}, #{tag1_oId,jdbcType=VARCHAR}, #{tag2_oId,jdbcType=VARCHAR}, 
       #{weight,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGTagTag">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGTagTag">
     insert into blodgod_tag_tag
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGTagTag">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGTagTag">
     update blodgod_tag_tag
     <set>
       <if test="tag1_oId != null">
@@ -72,7 +72,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGTagTag">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGTagTag">
     update blodgod_tag_tag
     set tag1_oId = #{tag1_oId,jdbcType=VARCHAR},
       tag2_oId = #{tag2_oId,jdbcType=VARCHAR},

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGCharacterMapper">
-  <resultMap id="BaseResultMap" type="model.BGCharacter">
+<mapper namespace="com.blackblod.web.mapper.BGCharacterMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGCharacter">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="characterUserId" jdbcType="VARCHAR" property="characterUserId" />
     <result column="characterContent" jdbcType="VARCHAR" property="characterContent" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="model.BGCharacter">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.BGCharacter">
     <result column="characterImg" jdbcType="LONGVARCHAR" property="characterImg" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -27,13 +27,13 @@
     delete from blodgod_character
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGCharacter">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGCharacter">
     insert into blodgod_character (oId, characterUserId, characterContent, 
       characterImg)
     values (#{oId,jdbcType=VARCHAR}, #{characterUserId,jdbcType=VARCHAR}, #{characterContent,jdbcType=VARCHAR}, 
       #{characterImg,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGCharacter">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGCharacter">
     insert into blodgod_character
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGCharacter">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGCharacter">
     update blodgod_character
     <set>
       <if test="characterUserId != null">
@@ -79,14 +79,14 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="model.BGCharacter">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.blackblod.web.dmo.BGCharacter">
     update blodgod_character
     set characterUserId = #{characterUserId,jdbcType=VARCHAR},
       characterContent = #{characterContent,jdbcType=VARCHAR},
       characterImg = #{characterImg,jdbcType=LONGVARCHAR}
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGCharacter">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGCharacter">
     update blodgod_character
     set characterUserId = #{characterUserId,jdbcType=VARCHAR},
       characterContent = #{characterContent,jdbcType=VARCHAR}

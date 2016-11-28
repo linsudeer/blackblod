@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGVoteMapper">
-  <resultMap id="BaseResultMap" type="model.BGVote">
+<mapper namespace="com.blackblod.web.mapper.BGVoteMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGVote">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="userId" jdbcType="VARCHAR" property="userId" />
     <result column="type" jdbcType="INTEGER" property="type" />
@@ -21,13 +21,13 @@
     delete from blodgod_vote
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGVote">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGVote">
     insert into blodgod_vote (oId, userId, type, 
       dataType, dataId)
     values (#{oId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
       #{dataType,jdbcType=INTEGER}, #{dataId,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGVote">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGVote">
     insert into blodgod_vote
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGVote">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGVote">
     update blodgod_vote
     <set>
       <if test="userId != null">
@@ -82,7 +82,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGVote">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGVote">
     update blodgod_vote
     set userId = #{userId,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},

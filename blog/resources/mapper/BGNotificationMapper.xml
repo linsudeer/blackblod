@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGNotificationMapper">
-  <resultMap id="BaseResultMap" type="model.BGNotification">
+<mapper namespace="com.blackblod.web.mapper.BGNotificationMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGNotification">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="userId" jdbcType="VARCHAR" property="userId" />
     <result column="dataId" jdbcType="VARCHAR" property="dataId" />
@@ -21,13 +21,13 @@
     delete from blodgod_notification
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGNotification">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGNotification">
     insert into blodgod_notification (oId, userId, dataId, 
       dataType, hasRead)
     values (#{oId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{dataId,jdbcType=VARCHAR}, 
       #{dataType,jdbcType=INTEGER}, #{hasRead,jdbcType=CHAR})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGNotification">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGNotification">
     insert into blodgod_notification
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGNotification">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGNotification">
     update blodgod_notification
     <set>
       <if test="userId != null">
@@ -82,7 +82,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGNotification">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGNotification">
     update blodgod_notification
     set userId = #{userId,jdbcType=VARCHAR},
       dataId = #{dataId,jdbcType=VARCHAR},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGRewardMapper">
-  <resultMap id="BaseResultMap" type="model.BGReward">
+<mapper namespace="com.blackblod.web.mapper.BGRewardMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGReward">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="senderId" jdbcType="VARCHAR" property="senderId" />
     <result column="dataId" jdbcType="VARCHAR" property="dataId" />
@@ -20,13 +20,13 @@
     delete from blodgod_reward
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="model.BGReward">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGReward">
     insert into blodgod_reward (oId, senderId, dataId, 
       type)
     values (#{oId,jdbcType=VARCHAR}, #{senderId,jdbcType=VARCHAR}, #{dataId,jdbcType=VARCHAR}, 
       #{type,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="model.BGReward">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGReward">
     insert into blodgod_reward
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGReward">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGReward">
     update blodgod_reward
     <set>
       <if test="senderId != null">
@@ -72,7 +72,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGReward">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGReward">
     update blodgod_reward
     set senderId = #{senderId,jdbcType=VARCHAR},
       dataId = #{dataId,jdbcType=VARCHAR},

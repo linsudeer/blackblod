@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackblod.web.dao.BGUserMapper">
-  <resultMap id="BaseResultMap" type="com.blackblod.web.model.BGUser">
+<mapper namespace="com.blackblod.web.mapper.BGUserMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.BGUser">
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="userNo" jdbcType="INTEGER" property="userNo" />
     <result column="userEmail" jdbcType="VARCHAR" property="userEmail" />
@@ -92,7 +92,7 @@
     delete from blodgod_user
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.blackblod.web.model.BGUser">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.BGUser">
     insert into blodgod_user (oId, userNo, userEmail, 
       userName, userPassword, userNickname, 
       userTags, userURL, userQQ, 
@@ -144,7 +144,7 @@
       #{userSubMailSendTime,jdbcType=BIGINT}, #{userKeyboardShortcutsStatus,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.blackblod.web.model.BGUser">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.BGUser">
     insert into blodgod_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -535,7 +535,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="model.BGUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackblod.web.dmo.BGUser">
     update blodgod_user
     <set>
       <if test="userNo != null">
@@ -730,7 +730,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="model.BGUser">
+  <update id="updateByPrimaryKey" parameterType="com.blackblod.web.dmo.BGUser">
     update blodgod_user
     set userNo = #{userNo,jdbcType=INTEGER},
       userEmail = #{userEmail,jdbcType=VARCHAR},
