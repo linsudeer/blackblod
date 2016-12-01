@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackblod.web.mapper.RevisionDmoMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.RevisionDmo">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="revisionDataType" jdbcType="INTEGER" property="revisionDataType" />
+    <result column="revisionDataId" jdbcType="VARCHAR" property="revisionDataId" />
+    <result column="revisionAuthorId" jdbcType="VARCHAR" property="revisionAuthorId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.RevisionDmo">
+    <result column="revisionData" jdbcType="LONGVARCHAR" property="revisionData" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oId, revisionDataType, revisionDataId, revisionAuthorId
+  </sql>
+  <sql id="Blob_Column_List">
+    revisionData
+  </sql>
+  <select id="selectByOId" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blodgod_revision
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByOId" parameterType="java.lang.String">
+    delete from blodgod_revision
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.blackblod.web.dmo.RevisionDmo">
+    insert into blodgod_revision (oId, revisionDataType, revisionDataId, 
+      revisionAuthorId, revisionData)
+    values (#{oId,jdbcType=VARCHAR}, #{revisionDataType,jdbcType=INTEGER}, #{revisionDataId,jdbcType=VARCHAR}, 
+      #{revisionAuthorId,jdbcType=VARCHAR}, #{revisionData,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.RevisionDmo">
+    insert into blodgod_revision
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="revisionDataType != null">
+        revisionDataType,
+      </if>
+      <if test="revisionDataId != null">
+        revisionDataId,
+      </if>
+      <if test="revisionAuthorId != null">
+        revisionAuthorId,
+      </if>
+      <if test="revisionData != null">
+        revisionData,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="revisionDataType != null">
+        #{revisionDataType,jdbcType=INTEGER},
+      </if>
+      <if test="revisionDataId != null">
+        #{revisionDataId,jdbcType=VARCHAR},
+      </if>
+      <if test="revisionAuthorId != null">
+        #{revisionAuthorId,jdbcType=VARCHAR},
+      </if>
+      <if test="revisionData != null">
+        #{revisionData,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.RevisionDmo">
+    update blodgod_revision
+    <set>
+      <if test="revisionDataType != null">
+        revisionDataType = #{revisionDataType,jdbcType=INTEGER},
+      </if>
+      <if test="revisionDataId != null">
+        revisionDataId = #{revisionDataId,jdbcType=VARCHAR},
+      </if>
+      <if test="revisionAuthorId != null">
+        revisionAuthorId = #{revisionAuthorId,jdbcType=VARCHAR},
+      </if>
+      <if test="revisionData != null">
+        revisionData = #{revisionData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOIdWithBLOBs" parameterType="com.blackblod.web.dmo.RevisionDmo">
+    update blodgod_revision
+    set revisionDataType = #{revisionDataType,jdbcType=INTEGER},
+      revisionDataId = #{revisionDataId,jdbcType=VARCHAR},
+      revisionAuthorId = #{revisionAuthorId,jdbcType=VARCHAR},
+      revisionData = #{revisionData,jdbcType=LONGVARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOId" parameterType="com.blackblod.web.dmo.RevisionDmo">
+    update blodgod_revision
+    set revisionDataType = #{revisionDataType,jdbcType=INTEGER},
+      revisionDataId = #{revisionDataId,jdbcType=VARCHAR},
+      revisionAuthorId = #{revisionAuthorId,jdbcType=VARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>

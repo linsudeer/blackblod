@@ -1,4 +1,7 @@
 package com.blackblod.web.blo;
+
+import com.blackblod.web.dto.CustomerDto;
+
 /**
  * 客户接口
  * @author Songli Li
@@ -6,4 +9,18 @@ package com.blackblod.web.blo;
  */
 public interface CustomerBlo {
 
+	/**
+	 * 注册
+	 * @author Songlin Li
+	 * @date 2016年11月30日 下午3:40:29
+	 */
+	public void register(CustomerDto customer);
+	
+	/**
+	 * 登录
+	 * @author Songlin Li
+	 * @date 2016年11月30日 下午3:40:38
+	 * @return
+	 */
+	public CustomerDto login(CustomerDto customer);
 }

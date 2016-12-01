@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackblod.web.mapper.TagTagDmoMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.TagTagDmo">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="tag1_oId" jdbcType="VARCHAR" property="tag1_oId" />
+    <result column="tag2_oId" jdbcType="VARCHAR" property="tag2_oId" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oId, tag1_oId, tag2_oId, weight
+  </sql>
+  <select id="selectByOId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from blodgod_tag_tag
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByOId" parameterType="java.lang.String">
+    delete from blodgod_tag_tag
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.blackblod.web.dmo.TagTagDmo">
+    insert into blodgod_tag_tag (oId, tag1_oId, tag2_oId, 
+      weight)
+    values (#{oId,jdbcType=VARCHAR}, #{tag1_oId,jdbcType=VARCHAR}, #{tag2_oId,jdbcType=VARCHAR}, 
+      #{weight,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.TagTagDmo">
+    insert into blodgod_tag_tag
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="tag1_oId != null">
+        tag1_oId,
+      </if>
+      <if test="tag2_oId != null">
+        tag2_oId,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="tag1_oId != null">
+        #{tag1_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="tag2_oId != null">
+        #{tag2_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.TagTagDmo">
+    update blodgod_tag_tag
+    <set>
+      <if test="tag1_oId != null">
+        tag1_oId = #{tag1_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="tag2_oId != null">
+        tag2_oId = #{tag2_oId,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOId" parameterType="com.blackblod.web.dmo.TagTagDmo">
+    update blodgod_tag_tag
+    set tag1_oId = #{tag1_oId,jdbcType=VARCHAR},
+      tag2_oId = #{tag2_oId,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=INTEGER}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>

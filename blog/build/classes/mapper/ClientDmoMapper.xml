@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackblod.web.mapper.ClientDmoMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.ClientDmo">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="clientName" jdbcType="VARCHAR" property="clientName" />
+    <result column="clientVersion" jdbcType="VARCHAR" property="clientVersion" />
+    <result column="clientHost" jdbcType="VARCHAR" property="clientHost" />
+    <result column="clientRuntimeEnv" jdbcType="VARCHAR" property="clientRuntimeEnv" />
+    <result column="clientLatestAddArticleTime" jdbcType="BIGINT" property="clientLatestAddArticleTime" />
+    <result column="clientLatestAddCommentTime" jdbcType="BIGINT" property="clientLatestAddCommentTime" />
+    <result column="clientAdminEmail" jdbcType="VARCHAR" property="clientAdminEmail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oId, clientName, clientVersion, clientHost, clientRuntimeEnv, clientLatestAddArticleTime, 
+    clientLatestAddCommentTime, clientAdminEmail
+  </sql>
+  <select id="selectByOId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from blodgod_client
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByOId" parameterType="java.lang.String">
+    delete from blodgod_client
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.blackblod.web.dmo.ClientDmo">
+    insert into blodgod_client (oId, clientName, clientVersion, 
+      clientHost, clientRuntimeEnv, clientLatestAddArticleTime, 
+      clientLatestAddCommentTime, clientAdminEmail
+      )
+    values (#{oId,jdbcType=VARCHAR}, #{clientName,jdbcType=VARCHAR}, #{clientVersion,jdbcType=VARCHAR}, 
+      #{clientHost,jdbcType=VARCHAR}, #{clientRuntimeEnv,jdbcType=VARCHAR}, #{clientLatestAddArticleTime,jdbcType=BIGINT}, 
+      #{clientLatestAddCommentTime,jdbcType=BIGINT}, #{clientAdminEmail,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.ClientDmo">
+    insert into blodgod_client
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="clientName != null">
+        clientName,
+      </if>
+      <if test="clientVersion != null">
+        clientVersion,
+      </if>
+      <if test="clientHost != null">
+        clientHost,
+      </if>
+      <if test="clientRuntimeEnv != null">
+        clientRuntimeEnv,
+      </if>
+      <if test="clientLatestAddArticleTime != null">
+        clientLatestAddArticleTime,
+      </if>
+      <if test="clientLatestAddCommentTime != null">
+        clientLatestAddCommentTime,
+      </if>
+      <if test="clientAdminEmail != null">
+        clientAdminEmail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientName != null">
+        #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientVersion != null">
+        #{clientVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="clientHost != null">
+        #{clientHost,jdbcType=VARCHAR},
+      </if>
+      <if test="clientRuntimeEnv != null">
+        #{clientRuntimeEnv,jdbcType=VARCHAR},
+      </if>
+      <if test="clientLatestAddArticleTime != null">
+        #{clientLatestAddArticleTime,jdbcType=BIGINT},
+      </if>
+      <if test="clientLatestAddCommentTime != null">
+        #{clientLatestAddCommentTime,jdbcType=BIGINT},
+      </if>
+      <if test="clientAdminEmail != null">
+        #{clientAdminEmail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.ClientDmo">
+    update blodgod_client
+    <set>
+      <if test="clientName != null">
+        clientName = #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientVersion != null">
+        clientVersion = #{clientVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="clientHost != null">
+        clientHost = #{clientHost,jdbcType=VARCHAR},
+      </if>
+      <if test="clientRuntimeEnv != null">
+        clientRuntimeEnv = #{clientRuntimeEnv,jdbcType=VARCHAR},
+      </if>
+      <if test="clientLatestAddArticleTime != null">
+        clientLatestAddArticleTime = #{clientLatestAddArticleTime,jdbcType=BIGINT},
+      </if>
+      <if test="clientLatestAddCommentTime != null">
+        clientLatestAddCommentTime = #{clientLatestAddCommentTime,jdbcType=BIGINT},
+      </if>
+      <if test="clientAdminEmail != null">
+        clientAdminEmail = #{clientAdminEmail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOId" parameterType="com.blackblod.web.dmo.ClientDmo">
+    update blodgod_client
+    set clientName = #{clientName,jdbcType=VARCHAR},
+      clientVersion = #{clientVersion,jdbcType=VARCHAR},
+      clientHost = #{clientHost,jdbcType=VARCHAR},
+      clientRuntimeEnv = #{clientRuntimeEnv,jdbcType=VARCHAR},
+      clientLatestAddArticleTime = #{clientLatestAddArticleTime,jdbcType=BIGINT},
+      clientLatestAddCommentTime = #{clientLatestAddCommentTime,jdbcType=BIGINT},
+      clientAdminEmail = #{clientAdminEmail,jdbcType=VARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>
