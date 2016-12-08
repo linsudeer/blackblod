@@ -14,14 +14,12 @@ public class UserRepoImpl implements UserRepo{
 
 	@Override
 	public String save(UserDmo user) {
-		userMapper.insert(user);
-		return null;
+		return userMapper.insert(user);
 	}
 	
 	@Override
 	public String saveSelective(UserDmo user) {
-		userMapper.insertSelective(user);
-		return null;
+		return userMapper.insertSelective(user);
 	}
 
 	@Override

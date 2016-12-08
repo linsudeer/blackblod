@@ -6,9 +6,9 @@ public interface UserDmoMapper {
 	
     int deleteByOId(String oId);
 
-    int insert(UserDmo record);
+    String insert(UserDmo record);
 
-    int insertSelective(UserDmo record);
+    String insertSelective(UserDmo record);
 
     UserDmo selectByOId(String oId);
 

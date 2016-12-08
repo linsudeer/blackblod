@@ -93,6 +93,9 @@
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.blackblod.web.dmo.UserDmo">
+  	<selectKey keyProperty="oId" resultType="string" order="BEFORE">    
+            select CONCAT(UNIX_TIMESTAMP(now()),ROUND(RAND()*1000,0))    
+    </selectKey> 
     insert into blodgod_user (oId, userNo, userEmail, 
       userName, userPassword, userNickname, 
       userTags, userURL, userQQ, 

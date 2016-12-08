@@ -9,6 +9,7 @@ import com.blackblod.web.blo.CustomerBlo;
 import com.blackblod.web.dto.CustomerDto;
 
 @RestController
+@RequestMapping("/web/customer")
 public class CustomerCtrl {
 	
 	@Autowired
@@ -27,7 +28,8 @@ public class CustomerCtrl {
 	 */
 	@RequestMapping("/register")
 	public ModelAndView register(CustomerDto customer){
-		customerBlo.register(customer);
+		String oId = customerBlo.register(customer);
+		System.out.println(oId);
 		return null;
 	}
 }

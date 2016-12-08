@@ -14,7 +14,7 @@ public interface CustomerBlo {
 	 * @author Songlin Li
 	 * @date 2016年11月30日 下午3:40:29
 	 */
-	public void register(CustomerDto customer);
+	public String register(CustomerDto customer);
 	
 	/**
 	 * 登录

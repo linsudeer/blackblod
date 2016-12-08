@@ -7,7 +7,8 @@ import com.blackblod.web.blo.CustomerBlo;
 import com.blackblod.web.dmo.UserDmo;
 import com.blackblod.web.dto.CustomerDto;
 import com.blackblod.web.repo.UserRepo;
-import com.blackblod.web.util.BeanUtil;
+import com.blackblod.web.util.BeanUtils;
+
 @Service
 public class CustomerBloImpl implements CustomerBlo{
 	
@@ -15,9 +16,9 @@ public class CustomerBloImpl implements CustomerBlo{
 	private UserRepo userRepo;
 
 	@Override
-	public void register(CustomerDto customer) {
-		UserDmo user = BeanUtil.convert(customer, UserDmo.class);
-		userRepo.saveSelective(user);
+	public String register(CustomerDto customer) {
+		UserDmo user = BeanUtils.convert(customer, UserDmo.class);
+		return userRepo.save(user);
 	}
 
 	@Override
