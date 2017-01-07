@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackblod.web.mapper.LinkMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.LinkDmo">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="linkType" jdbcType="INTEGER" property="linkType" />
+    <result column="linkSubmitCnt" jdbcType="INTEGER" property="linkSubmitCnt" />
+    <result column="linkClickCnt" jdbcType="INTEGER" property="linkClickCnt" />
+    <result column="linkGoodCnt" jdbcType="INTEGER" property="linkGoodCnt" />
+    <result column="linkBadCnt" jdbcType="INTEGER" property="linkBadCnt" />
+    <result column="linkBaiduRefCnt" jdbcType="INTEGER" property="linkBaiduRefCnt" />
+    <result column="linkScore" jdbcType="DOUBLE" property="linkScore" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.LinkDmoWithBLOBs">
+    <result column="linkAddr" jdbcType="LONGVARCHAR" property="linkAddr" />
+    <result column="linkTitle" jdbcType="LONGVARCHAR" property="linkTitle" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oId, linkType, linkSubmitCnt, linkClickCnt, linkGoodCnt, linkBadCnt, linkBaiduRefCnt, 
+    linkScore
+  </sql>
+  <sql id="Blob_Column_List">
+    linkAddr, linkTitle
+  </sql>
+  <select id="selectByOId" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blodgod_link
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByOId" parameterType="java.lang.String">
+    delete from blodgod_link
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.blackblod.web.dmo.LinkDmoWithBLOBs">
+    insert into blodgod_link (oId, linkType, linkSubmitCnt, 
+      linkClickCnt, linkGoodCnt, linkBadCnt, 
+      linkBaiduRefCnt, linkScore, linkAddr, 
+      linkTitle)
+    values (#{oId,jdbcType=VARCHAR}, #{linkType,jdbcType=INTEGER}, #{linkSubmitCnt,jdbcType=INTEGER}, 
+      #{linkClickCnt,jdbcType=INTEGER}, #{linkGoodCnt,jdbcType=INTEGER}, #{linkBadCnt,jdbcType=INTEGER}, 
+      #{linkBaiduRefCnt,jdbcType=INTEGER}, #{linkScore,jdbcType=DOUBLE}, #{linkAddr,jdbcType=LONGVARCHAR}, 
+      #{linkTitle,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.LinkDmoWithBLOBs">
+    insert into blodgod_link
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="linkType != null">
+        linkType,
+      </if>
+      <if test="linkSubmitCnt != null">
+        linkSubmitCnt,
+      </if>
+      <if test="linkClickCnt != null">
+        linkClickCnt,
+      </if>
+      <if test="linkGoodCnt != null">
+        linkGoodCnt,
+      </if>
+      <if test="linkBadCnt != null">
+        linkBadCnt,
+      </if>
+      <if test="linkBaiduRefCnt != null">
+        linkBaiduRefCnt,
+      </if>
+      <if test="linkScore != null">
+        linkScore,
+      </if>
+      <if test="linkAddr != null">
+        linkAddr,
+      </if>
+      <if test="linkTitle != null">
+        linkTitle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="linkType != null">
+        #{linkType,jdbcType=INTEGER},
+      </if>
+      <if test="linkSubmitCnt != null">
+        #{linkSubmitCnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkClickCnt != null">
+        #{linkClickCnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkGoodCnt != null">
+        #{linkGoodCnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkBadCnt != null">
+        #{linkBadCnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkBaiduRefCnt != null">
+        #{linkBaiduRefCnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkScore != null">
+        #{linkScore,jdbcType=DOUBLE},
+      </if>
+      <if test="linkAddr != null">
+        #{linkAddr,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="linkTitle != null">
+        #{linkTitle,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.LinkDmoWithBLOBs">
+    update blodgod_link
+    <set>
+      <if test="linkType != null">
+        linkType = #{linkType,jdbcType=INTEGER},
+      </if>
+      <if test="linkSubmitCnt != null">
+        linkSubmitCnt = #{linkSubmitCnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkClickCnt != null">
+        linkClickCnt = #{linkClickCnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkGoodCnt != null">
+        linkGoodCnt = #{linkGoodCnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkBadCnt != null">
+        linkBadCnt = #{linkBadCnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkBaiduRefCnt != null">
+        linkBaiduRefCnt = #{linkBaiduRefCnt,jdbcType=INTEGER},
+      </if>
+      <if test="linkScore != null">
+        linkScore = #{linkScore,jdbcType=DOUBLE},
+      </if>
+      <if test="linkAddr != null">
+        linkAddr = #{linkAddr,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="linkTitle != null">
+        linkTitle = #{linkTitle,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOIdWithBLOBs" parameterType="com.blackblod.web.dmo.LinkDmoWithBLOBs">
+    update blodgod_link
+    set linkType = #{linkType,jdbcType=INTEGER},
+      linkSubmitCnt = #{linkSubmitCnt,jdbcType=INTEGER},
+      linkClickCnt = #{linkClickCnt,jdbcType=INTEGER},
+      linkGoodCnt = #{linkGoodCnt,jdbcType=INTEGER},
+      linkBadCnt = #{linkBadCnt,jdbcType=INTEGER},
+      linkBaiduRefCnt = #{linkBaiduRefCnt,jdbcType=INTEGER},
+      linkScore = #{linkScore,jdbcType=DOUBLE},
+      linkAddr = #{linkAddr,jdbcType=LONGVARCHAR},
+      linkTitle = #{linkTitle,jdbcType=LONGVARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOId" parameterType="com.blackblod.web.dmo.LinkDmo">
+    update blodgod_link
+    set linkType = #{linkType,jdbcType=INTEGER},
+      linkSubmitCnt = #{linkSubmitCnt,jdbcType=INTEGER},
+      linkClickCnt = #{linkClickCnt,jdbcType=INTEGER},
+      linkGoodCnt = #{linkGoodCnt,jdbcType=INTEGER},
+      linkBadCnt = #{linkBadCnt,jdbcType=INTEGER},
+      linkBaiduRefCnt = #{linkBaiduRefCnt,jdbcType=INTEGER},
+      linkScore = #{linkScore,jdbcType=DOUBLE}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>
