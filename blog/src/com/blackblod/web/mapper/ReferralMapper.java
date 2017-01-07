@@ -1,17 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGReferral;
+import com.blackblod.web.dmo.ReferralDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface ReferralMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGReferral record);
-
-    int insertSelective(BGReferral record);
-
-    BGReferral selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGReferral record);
-
-    int updateByPrimaryKey(BGReferral record);
+public interface ReferralMapper extends BasicMapper<ReferralDmo> {
+    
 }

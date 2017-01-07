@@ -1,19 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGOption;
+import com.blackblod.web.dmo.OptionDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface OptionMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGOption record);
-
-    int insertSelective(BGOption record);
-
-    BGOption selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGOption record);
-
-    int updateByPrimaryKeyWithBLOBs(BGOption record);
-
-    int updateByPrimaryKey(BGOption record);
+public interface OptionMapper extends BasicMapper<OptionDmo> {
+    
 }

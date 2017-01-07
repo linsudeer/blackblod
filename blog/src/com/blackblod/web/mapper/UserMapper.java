@@ -1,17 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGUser;
+import com.blackblod.web.dmo.UserDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface UserMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGUser record);
-
-    int insertSelective(BGUser record);
-
-    BGUser selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGUser record);
-
-    int updateByPrimaryKey(BGUser record);
+public interface UserMapper extends BasicMapper<UserDmo>{
+	
 }

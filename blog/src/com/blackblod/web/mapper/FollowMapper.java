@@ -1,17 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGFollow;
+import com.blackblod.web.dmo.FollowDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface FollowMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGFollow record);
-
-    int insertSelective(BGFollow record);
-
-    BGFollow selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGFollow record);
-
-    int updateByPrimaryKey(BGFollow record);
+public interface FollowMapper extends BasicMapper<FollowDmo> {
+    
 }

@@ -1,17 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGTagTag;
+import com.blackblod.web.dmo.TagTagDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface TagTagMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGTagTag record);
-
-    int insertSelective(BGTagTag record);
-
-    BGTagTag selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGTagTag record);
-
-    int updateByPrimaryKey(BGTagTag record);
+public interface TagTagMapper extends BasicMapper<TagTagDmo> {
+   
 }

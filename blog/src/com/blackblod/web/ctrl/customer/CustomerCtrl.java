@@ -28,7 +28,7 @@ public class CustomerCtrl {
 	 */
 	@RequestMapping("/register")
 	public ModelAndView register(CustomerDto customer){
-		String oId = customerBlo.register(customer);
+		int oId = customerBlo.register(customer);
 		System.out.println(oId);
 		return null;
 	}

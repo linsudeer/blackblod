@@ -1,20 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGDomain;
-import com.blackblod.web.dmo.BGDomainWithBLOBs;
+import com.blackblod.web.dmo.DomainDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface DomainMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGDomainWithBLOBs record);
-
-    int insertSelective(BGDomainWithBLOBs record);
-
-    BGDomainWithBLOBs selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGDomainWithBLOBs record);
-
-    int updateByPrimaryKeyWithBLOBs(BGDomainWithBLOBs record);
-
-    int updateByPrimaryKey(BGDomain record);
+public interface DomainMapper extends BasicMapper<DomainDmo> {
+    
 }

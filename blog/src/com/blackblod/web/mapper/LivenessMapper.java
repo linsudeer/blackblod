@@ -1,17 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGLiveness;
+import com.blackblod.web.dmo.LivenessDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface LivenessMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGLiveness record);
-
-    int insertSelective(BGLiveness record);
-
-    BGLiveness selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGLiveness record);
-
-    int updateByPrimaryKey(BGLiveness record);
+public interface LivenessMapper extends BasicMapper<LivenessDmo> {
+   
 }

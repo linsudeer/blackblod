@@ -1,20 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGArticle;
-import com.blackblod.web.dmo.BGArticleWithBLOBs;
+import com.blackblod.web.dmo.ArticleDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface ArticleMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGArticleWithBLOBs record);
-
-    int insertSelective(BGArticleWithBLOBs record);
-
-    BGArticleWithBLOBs selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGArticleWithBLOBs record);
-
-    int updateByPrimaryKeyWithBLOBs(BGArticleWithBLOBs record);
-
-    int updateByPrimaryKey(BGArticle record);
+public interface ArticleMapper extends BasicMapper<ArticleDmo>{
+  
 }

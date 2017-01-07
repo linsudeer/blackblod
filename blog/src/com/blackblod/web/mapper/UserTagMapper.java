@@ -1,17 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGUserTag;
+import com.blackblod.web.dmo.UserTagDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface UserTagMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGUserTag record);
-
-    int insertSelective(BGUserTag record);
-
-    BGUserTag selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGUserTag record);
-
-    int updateByPrimaryKey(BGUserTag record);
+public interface UserTagMapper extends BasicMapper<UserTagDmo> {
+    
 }

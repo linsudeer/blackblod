@@ -1,17 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGEmotion;
+import com.blackblod.web.dmo.EmotionDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface EmotionMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGEmotion record);
-
-    int insertSelective(BGEmotion record);
-
-    BGEmotion selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGEmotion record);
-
-    int updateByPrimaryKey(BGEmotion record);
+public interface EmotionMapper extends BasicMapper<EmotionDmo> {
+   
 }

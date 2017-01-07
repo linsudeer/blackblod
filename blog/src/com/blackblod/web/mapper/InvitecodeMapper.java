@@ -1,19 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGInvitecode;
+import com.blackblod.web.dmo.InvitecodeDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface InvitecodeMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGInvitecode record);
-
-    int insertSelective(BGInvitecode record);
-
-    BGInvitecode selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGInvitecode record);
-
-    int updateByPrimaryKeyWithBLOBs(BGInvitecode record);
-
-    int updateByPrimaryKey(BGInvitecode record);
+public interface InvitecodeMapper extends BasicMapper<InvitecodeDmo> {
+    
 }

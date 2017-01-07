@@ -16,7 +16,7 @@ public class CustomerBloImpl implements CustomerBlo{
 	private UserRepo userRepo;
 
 	@Override
-	public String register(CustomerDto customer) {
+	public int register(CustomerDto customer) {
 		UserDmo user = BeanUtils.convert(customer, UserDmo.class);
 		return userRepo.save(user);
 	}

@@ -1,7 +1,5 @@
 package com.blackblod.web.mapper.basic;
 
-import com.blackblod.web.dmo.BGUser;
-
 public interface BasicMapper <T> {
 
 	int deleteByPrimaryKey(T oId);

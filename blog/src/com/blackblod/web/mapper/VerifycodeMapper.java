@@ -1,17 +1,8 @@
 package com.blackblod.web.mapper;
 
-import com.blackblod.web.dmo.BGVerifycode;
+import com.blackblod.web.dmo.VerifycodeDmo;
+import com.blackblod.web.mapper.basic.BasicMapper;
 
-public interface VerifycodeMapper {
-    int deleteByPrimaryKey(String oId);
-
-    int insert(BGVerifycode record);
-
-    int insertSelective(BGVerifycode record);
-
-    BGVerifycode selectByPrimaryKey(String oId);
-
-    int updateByPrimaryKeySelective(BGVerifycode record);
-
-    int updateByPrimaryKey(BGVerifycode record);
+public interface VerifycodeMapper extends BasicMapper<VerifycodeDmo> {
+    
 }
