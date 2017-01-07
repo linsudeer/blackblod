@@ -17,12 +17,23 @@ import com.blackblod.web.type.date.DateTime;
  */
 public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
+	/**
+	 * 相差天数
+	 * @param start
+	 * @param end
+	 * @return
+	 */
 	public static int getOffsetDays(Date start, Date end) {
 		long t = end.getTime() - start.getTime();
 		t = t / (3600*24*1000);
 		return (int) t;
 	}
 
+	/**
+	 * 转换类型为DateTime
+	 * @param value
+	 * @return
+	 */
 	public static DateTime parseToDateTime(String value) {
 		DateTime dt = new DateTime(value);
 		return dt;
@@ -42,6 +53,12 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		return dateTime.toShortString();
 	}
 
+	/**
+	 * 转换为指定格式
+	 * @param str
+	 * @param patterns
+	 * @return
+	 */
 	public static Date parseToDate(String str, String patterns) {
 		try {
 			return DateUtils.parseDate(str, patterns);
@@ -67,8 +84,20 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		return format(date, toPattern);
 	}
 
+	/**
+	 * 当前秒
+	 * @return
+	 */
 	public static long getCurSecond() {
 		return System.currentTimeMillis() / 1000L;
+	}
+	
+	/**
+	 * 当前毫秒
+	 * @return
+	 */
+	public static long getCurMillis() {
+		return System.currentTimeMillis();
 	}
 
 	/**

@@ -9,7 +9,7 @@ import org.apache.commons.beanutils.PropertyUtils;
 import com.blackblod.web.util.BeanUtils;
 
 /**
- * Created by lingzhen on 15/12/9.
+ * Created by Li Songlin
  */
 public class StringNullTransfer implements Transfer {
 
