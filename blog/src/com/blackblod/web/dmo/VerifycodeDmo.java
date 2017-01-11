@@ -1,21 +1,25 @@
 package com.blackblod.web.dmo;
-
+/**
+ * 验证码
+ * @author Songli Li
+ * @date 2017年1月10日 下午5:15:28
+ */
 public class VerifycodeDmo {
     private String oId;
 
-    private String userId;
+    private String userId;//使用者
 
-    private Integer type;
+    private Integer type;//类型
 
-    private Integer bizType;
+    private Integer bizType;//业务类型
 
-    private String receiver;
+    private String receiver;//接受者
 
-    private String code;
+    private String code;//验证码
 
-    private Integer status;
+    private Integer status;//状态
 
-    private Long expired;
+    private Long expired;//过期时间
 
     public String getoId() {
         return oId;

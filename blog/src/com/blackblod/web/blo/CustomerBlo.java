@@ -1,5 +1,6 @@
 package com.blackblod.web.blo;
 
+import com.blackblod.web.dmo.UserDmo;
 import com.blackblod.web.dto.CustomerDto;
 
 /**
@@ -14,7 +15,7 @@ public interface CustomerBlo {
 	 * @author Songlin Li
 	 * @date 2016年11月30日 下午3:40:29
 	 */
-	public int register(CustomerDto customer);
+	public int register(UserDmo user);
 	
 	/**
 	 * 登录
@@ -22,5 +23,5 @@ public interface CustomerBlo {
 	 * @date 2016年11月30日 下午3:40:38
 	 * @return
 	 */
-	public CustomerDto login(CustomerDto customer);
+	public CustomerDto login(UserDmo user);
 }

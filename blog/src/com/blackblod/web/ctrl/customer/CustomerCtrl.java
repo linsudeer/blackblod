@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.blackblod.web.blo.CustomerBlo;
+import com.blackblod.web.dmo.UserDmo;
 import com.blackblod.web.dto.CustomerDto;
+import com.blackblod.web.util.BeanUtils;
 
 @RestController
 @RequestMapping("/web/customer")
@@ -28,7 +30,8 @@ public class CustomerCtrl {
 	 */
 	@RequestMapping("/register")
 	public ModelAndView register(CustomerDto customer){
-		int oId = customerBlo.register(customer);
+		UserDmo user = BeanUtils.convert(customer, UserDmo.class);
+		int oId = customerBlo.register(user);
 		System.out.println(oId);
 		return null;
 	}

@@ -1,5 +1,10 @@
 package com.blackblod.web.dmo;
 
+/**
+ * 用户
+ * @author Songli Li
+ * @date 2017年1月10日 下午5:14:12
+ */
 public class UserDmo {
     private String oId;
 

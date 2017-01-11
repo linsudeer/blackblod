@@ -1,17 +1,21 @@
 package com.blackblod.web.dmo;
-
+/**
+ * 邀请码
+ * @author Songli Li
+ * @date 2017年1月10日 下午5:19:06
+ */
 public class InvitecodeDmo {
     private String oId;
 
-    private String code;
+    private String code;//邀请码
 
-    private String generatorId;
+    private String generatorId;//生成用户id
 
-    private String userId;
+    private String userId;//使用者id
 
-    private Long useTime;
+    private Long useTime;//使用时间
 
-    private Integer status;
+    private Integer status;//状态
 
     private String memo;
 
