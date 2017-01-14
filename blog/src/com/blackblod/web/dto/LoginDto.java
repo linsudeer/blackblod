@@ -1,6 +1,11 @@
 package com.blackblod.web.dto;
 
 public class LoginDto {
+	
+	/**
+	 * 昵称
+	 */
+	private String userNickname;
 
 	/**
      * 邮箱
@@ -27,7 +32,13 @@ public class LoginDto {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
-    
-    
+
+	public String getUserNickname() {
+		return userNickname;
+	}
+
+	public void setUserNickname(String userNickname) {
+		this.userNickname = userNickname;
+	}
     
 }

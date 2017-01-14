@@ -13,7 +13,10 @@ import com.blackblod.web.dto.CustomerDto;
 import com.blackblod.web.dto.LoginDto;
 import com.blackblod.web.dto.RequestDto;
 import com.blackblod.web.dto.ResponseDto;
+import com.blackblod.web.dto.VoidDto;
+import com.blackblod.web.dto.exception.BizException;
 import com.blackblod.web.util.BeanUtils;
+import com.blackblod.web.util.ResponseDtoUtils;
 
 @RestController
 @RequestMapping("/web/customer")
@@ -34,10 +37,13 @@ public class CustomerCtrl {
 	 * @return
 	 */
 	@RequestMapping("/register")
-	public @ResponseBody ResponseDto<CustomerDto> register( @RequestBody RequestDto<LoginDto> params){
-		UserDmo user = BeanUtils.convert(params, UserDmo.class);
-		int oId = customerBlo.register(user);
-		System.out.println(oId);
-		return null;
+	public @ResponseBody ResponseDto<VoidDto> register( @RequestBody RequestDto<LoginDto> params){
+		try{
+			UserDmo user = BeanUtils.convert(params, UserDmo.class);
+			customerBlo.register(user);
+		}catch (BizException e) {
+			return ResponseDtoUtils.create(e);
+		}
+		return ResponseDtoUtils.createSuccess();
 	}
 }
