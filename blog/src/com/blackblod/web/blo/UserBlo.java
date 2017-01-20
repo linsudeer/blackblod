@@ -8,14 +8,14 @@ import com.blackblod.web.dto.CustomerDto;
  * @author Songli Li
  * @date 2016年11月28日 下午6:26:56
  */
-public interface CustomerBlo {
+public interface UserBlo {
 
 	/**
 	 * 注册
 	 * @author Songlin Li
 	 * @date 2016年11月30日 下午3:40:29
 	 */
-	public int register(UserDmo user);
+	int register(UserDmo user);
 	
 	/**
 	 * 登录
@@ -23,5 +23,5 @@ public interface CustomerBlo {
 	 * @date 2016年11月30日 下午3:40:38
 	 * @return
 	 */
-	public CustomerDto login(UserDmo user);
+	CustomerDto login(UserDmo user);
 }

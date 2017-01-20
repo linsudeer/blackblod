@@ -14,22 +14,22 @@ public class UserRepoImpl implements UserRepo{
 
 	@Override
 	public int save(UserDmo user) {
-		return userMapper.insert(user);
+		return userMapper.save(user);
 	}
 	
 	@Override
 	public int saveSelective(UserDmo user) {
-		return userMapper.insertSelective(user);
+		return userMapper.saveSelective(user);
 	}
 
 	@Override
 	public void update(UserDmo user) {
-		userMapper.updateByPrimaryKey(user);
+		userMapper.updateByOId(user);
 	}
 	
 	@Override
 	public void updateSelective(UserDmo user) {
-		userMapper.updateByPrimaryKeySelective(user);
+		userMapper.updateByOIdSelective(user);
 	}
 
 	@Override

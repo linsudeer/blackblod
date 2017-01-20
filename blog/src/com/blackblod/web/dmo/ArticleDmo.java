@@ -1,5 +1,10 @@
 package com.blackblod.web.dmo;
 
+/**
+ * 文章
+ * @author Songli Li
+ * @date 2017年1月18日 下午4:15:48
+ */
 public class ArticleDmo {
     private String oId;
 
@@ -64,6 +69,10 @@ public class ArticleDmo {
     private Integer articlePerfect;
 
     private Integer articleAnonymousView;
+    
+    private String articleContent;
+    
+    private String articleRewardContent;
 
     public String getoId() {
         return oId;
@@ -320,4 +329,20 @@ public class ArticleDmo {
     public void setArticleAnonymousView(Integer articleAnonymousView) {
         this.articleAnonymousView = articleAnonymousView;
     }
+
+	public String getArticleContent() {
+		return articleContent;
+	}
+
+	public void setArticleContent(String articleContent) {
+		this.articleContent = articleContent;
+	}
+
+	public String getArticleRewardContent() {
+		return articleRewardContent;
+	}
+
+	public void setArticleRewardContent(String articleRewardContent) {
+		this.articleRewardContent = articleRewardContent;
+	}
 }

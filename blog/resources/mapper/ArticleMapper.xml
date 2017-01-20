@@ -34,8 +34,6 @@
     <result column="articleAnonymous" jdbcType="INTEGER" property="articleAnonymous" />
     <result column="articlePerfect" jdbcType="INTEGER" property="articlePerfect" />
     <result column="articleAnonymousView" jdbcType="INTEGER" property="articleAnonymousView" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.ArticleDmoWithBLOBs">
     <result column="articleContent" jdbcType="LONGVARCHAR" property="articleContent" />
     <result column="articleRewardContent" jdbcType="LONGVARCHAR" property="articleRewardContent" />
   </resultMap>
@@ -46,24 +44,19 @@
     syncWithblodgodClient, clientArticleId, clientArticlePermalink, articleEditorType, 
     articleStatus, articleType, articleGoodCnt, articleBadCnt, articleCollectCnt, redditScore, 
     articleCity, articleIP, articleUA, articleStick, articleAnonymous, articlePerfect, 
-    articleAnonymousView
+    articleContent, articleRewardContent, articleAnonymousView
   </sql>
-  <sql id="Blob_Column_List">
-    articleContent, articleRewardContent
-  </sql>
-  <select id="selectByOId" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+  <select id="getByOId" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from blodgod_article
     where oId = #{oId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByOId" parameterType="java.lang.String">
+  <delete id="removeByOId" parameterType="java.lang.String">
     delete from blodgod_article
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.blackblod.web.dmo.ArticleDmoWithBLOBs">
+  <insert id="save" parameterType="com.blackblod.web.dmo.ArticleDmo">
     insert into blodgod_article (oId, articleTitle, articleTags, 
       articleAuthorEmail, articleAuthorId, articleCommentCount, 
       articleViewCount, articleRewardPoint, articlePermalink, 
@@ -91,7 +84,7 @@
       #{articleAnonymousView,jdbcType=INTEGER}, #{articleContent,jdbcType=LONGVARCHAR}, 
       #{articleRewardContent,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.ArticleDmoWithBLOBs">
+  <insert id="saveSelective" parameterType="com.blackblod.web.dmo.ArticleDmo">
     insert into blodgod_article
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -302,7 +295,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.ArticleDmoWithBLOBs">
+  <update id="updateSelective" parameterType="om.blackblod.web.dmo.ArticleDmo">
     update blodgod_article
     <set>
       <if test="articleTitle != null">
@@ -407,43 +400,7 @@
     </set>
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByOIdWithBLOBs" parameterType="com.blackblod.web.dmo.ArticleDmoWithBLOBs">
-    update blodgod_article
-    set articleTitle = #{articleTitle,jdbcType=VARCHAR},
-      articleTags = #{articleTags,jdbcType=VARCHAR},
-      articleAuthorEmail = #{articleAuthorEmail,jdbcType=VARCHAR},
-      articleAuthorId = #{articleAuthorId,jdbcType=VARCHAR},
-      articleCommentCount = #{articleCommentCount,jdbcType=INTEGER},
-      articleViewCount = #{articleViewCount,jdbcType=INTEGER},
-      articleRewardPoint = #{articleRewardPoint,jdbcType=INTEGER},
-      articlePermalink = #{articlePermalink,jdbcType=VARCHAR},
-      articleCreateTime = #{articleCreateTime,jdbcType=BIGINT},
-      articleUpdateTime = #{articleUpdateTime,jdbcType=BIGINT},
-      articleLatestCmtTime = #{articleLatestCmtTime,jdbcType=BIGINT},
-      articleLatestCmterName = #{articleLatestCmterName,jdbcType=VARCHAR},
-      articleRandomDouble = #{articleRandomDouble,jdbcType=DOUBLE},
-      articleCommentable = #{articleCommentable,jdbcType=CHAR},
-      syncWithblodgodClient = #{syncWithblodgodClient,jdbcType=CHAR},
-      clientArticleId = #{clientArticleId,jdbcType=VARCHAR},
-      clientArticlePermalink = #{clientArticlePermalink,jdbcType=VARCHAR},
-      articleEditorType = #{articleEditorType,jdbcType=INTEGER},
-      articleStatus = #{articleStatus,jdbcType=INTEGER},
-      articleType = #{articleType,jdbcType=INTEGER},
-      articleGoodCnt = #{articleGoodCnt,jdbcType=INTEGER},
-      articleBadCnt = #{articleBadCnt,jdbcType=INTEGER},
-      articleCollectCnt = #{articleCollectCnt,jdbcType=INTEGER},
-      redditScore = #{redditScore,jdbcType=DOUBLE},
-      articleCity = #{articleCity,jdbcType=VARCHAR},
-      articleIP = #{articleIP,jdbcType=VARCHAR},
-      articleUA = #{articleUA,jdbcType=VARCHAR},
-      articleStick = #{articleStick,jdbcType=BIGINT},
-      articleAnonymous = #{articleAnonymous,jdbcType=INTEGER},
-      articlePerfect = #{articlePerfect,jdbcType=INTEGER},
-      articleAnonymousView = #{articleAnonymousView,jdbcType=INTEGER},
-      articleContent = #{articleContent,jdbcType=LONGVARCHAR},
-      articleRewardContent = #{articleRewardContent,jdbcType=LONGVARCHAR}
-    where oId = #{oId,jdbcType=VARCHAR}
-  </update>
+  
   <update id="updateByOId" parameterType="com.blackblod.web.dmo.ArticleDmo">
     update blodgod_article
     set articleTitle = #{articleTitle,jdbcType=VARCHAR},

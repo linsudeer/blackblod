@@ -5,8 +5,6 @@
     <id column="oId" jdbcType="VARCHAR" property="oId" />
     <result column="characterUserId" jdbcType="VARCHAR" property="characterUserId" />
     <result column="characterContent" jdbcType="VARCHAR" property="characterContent" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.CharacterDmo">
     <result column="characterImg" jdbcType="LONGVARCHAR" property="characterImg" />
   </resultMap>
   <sql id="Base_Column_List">

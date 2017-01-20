@@ -3,14 +3,12 @@ package com.blackblod.web.ctrl.customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.blackblod.web.blo.CustomerBlo;
+import com.blackblod.web.blo.UserBlo;
 import com.blackblod.web.dmo.UserDmo;
-import com.blackblod.web.dto.CustomerDto;
-import com.blackblod.web.dto.LoginDto;
+import com.blackblod.web.dto.RegisterDto;
 import com.blackblod.web.dto.RequestDto;
 import com.blackblod.web.dto.ResponseDto;
 import com.blackblod.web.dto.VoidDto;
@@ -23,7 +21,7 @@ import com.blackblod.web.util.ResponseDtoUtils;
 public class CustomerCtrl {
 	
 	@Autowired
-	private CustomerBlo customerBlo;
+	private UserBlo customerBlo;
 
 	public ModelAndView login(){
 		return null;
@@ -37,7 +35,7 @@ public class CustomerCtrl {
 	 * @return
 	 */
 	@RequestMapping("/register")
-	public @ResponseBody ResponseDto<VoidDto> register( @RequestBody RequestDto<LoginDto> params){
+	public ResponseDto<VoidDto> register( @RequestBody RequestDto<RegisterDto> params){
 		try{
 			UserDmo user = BeanUtils.convert(params, UserDmo.class);
 			customerBlo.register(user);
@@ -45,5 +43,11 @@ public class CustomerCtrl {
 			return ResponseDtoUtils.create(e);
 		}
 		return ResponseDtoUtils.createSuccess();
+	}
+	
+	public ResponseDto<VoidDto> checkEmail(){
+		
+		return null;
+		
 	}
 }

@@ -1,8 +1,8 @@
 package com.blackblod.web.mapper;
 
 import com.blackblod.web.dmo.TagTagDmo;
-import com.blackblod.web.mapper.basic.BasicMapper;
+import com.blackblod.web.mapper.basic.BaseMapper;
 
-public interface TagTagMapper extends BasicMapper<TagTagDmo> {
+public interface TagTagMapper extends BaseMapper<TagTagDmo> {
    
 }

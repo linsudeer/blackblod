@@ -1,8 +1,8 @@
 package com.blackblod.web.mapper;
 
 import com.blackblod.web.dmo.DomainDmo;
-import com.blackblod.web.mapper.basic.BasicMapper;
+import com.blackblod.web.mapper.basic.BaseMapper;
 
-public interface DomainMapper extends BasicMapper<DomainDmo> {
+public interface DomainMapper extends BaseMapper<DomainDmo> {
     
 }
