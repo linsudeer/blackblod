@@ -24,12 +24,12 @@ public class UserRepoImpl implements UserRepo{
 
 	@Override
 	public void update(UserDmo user) {
-		userMapper.updateByOId(user);
+		userMapper.update(user);
 	}
 	
 	@Override
 	public void updateSelective(UserDmo user) {
-		userMapper.updateByOIdSelective(user);
+		userMapper.updateSelective(user);
 	}
 
 	@Override
