@@ -37,6 +37,7 @@
 	<jsoup.version>1.8.3</jsoup.version>
 	<poi.version>3.9</poi.version>
 	<javax-mail.version>1.4.1</javax-mail.version>
+	<fileupload.version>1.3.2</fileupload.version>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
@@ -265,6 +266,13 @@
 		<artifactId>poi-ooxml</artifactId>
 		<version>${poi.version}</version>
 	</dependency>
+	
+	<!-- dupload -->
+	<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>${fileupload.version}</version>
+</dependency>
 		
   </dependencies>
   <build>

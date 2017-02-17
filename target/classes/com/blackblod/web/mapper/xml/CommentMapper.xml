@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackblod.web.mapper.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.CommentDmo">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="clientCommentId" jdbcType="VARCHAR" property="clientCommentId" />
+    <result column="commentCreateTime" jdbcType="BIGINT" property="commentCreateTime" />
+    <result column="commentAuthorEmail" jdbcType="VARCHAR" property="commentAuthorEmail" />
+    <result column="commentAuthorId" jdbcType="VARCHAR" property="commentAuthorId" />
+    <result column="commentOnArticleId" jdbcType="VARCHAR" property="commentOnArticleId" />
+    <result column="commentSharpURL" jdbcType="VARCHAR" property="commentSharpURL" />
+    <result column="commentOriginalCommentId" jdbcType="VARCHAR" property="commentOriginalCommentId" />
+    <result column="commentStatus" jdbcType="INTEGER" property="commentStatus" />
+    <result column="commentIP" jdbcType="VARCHAR" property="commentIP" />
+    <result column="commentUA" jdbcType="VARCHAR" property="commentUA" />
+    <result column="commentAnonymous" jdbcType="INTEGER" property="commentAnonymous" />
+    <result column="commentGoodCnt" jdbcType="INTEGER" property="commentGoodCnt" />
+    <result column="commentBadCnt" jdbcType="INTEGER" property="commentBadCnt" />
+    <result column="commentScore" jdbcType="DOUBLE" property="commentScore" />
+    <result column="commentReplyCnt" jdbcType="INTEGER" property="commentReplyCnt" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.CommentDmo">
+    <result column="commentContent" jdbcType="LONGVARCHAR" property="commentContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oId, clientCommentId, commentCreateTime, commentAuthorEmail, commentAuthorId, commentOnArticleId, 
+    commentSharpURL, commentOriginalCommentId, commentStatus, commentIP, commentUA, commentAnonymous, 
+    commentGoodCnt, commentBadCnt, commentScore, commentReplyCnt
+  </sql>
+  <sql id="Blob_Column_List">
+    commentContent
+  </sql>
+  <select id="selectByOId" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blodgod_comment
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByOId" parameterType="java.lang.String">
+    delete from blodgod_comment
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.blackblod.web.dmo.CommentDmo">
+    insert into blodgod_comment (oId, clientCommentId, commentCreateTime, 
+      commentAuthorEmail, commentAuthorId, commentOnArticleId, 
+      commentSharpURL, commentOriginalCommentId, 
+      commentStatus, commentIP, commentUA, 
+      commentAnonymous, commentGoodCnt, commentBadCnt, 
+      commentScore, commentReplyCnt, commentContent
+      )
+    values (#{oId,jdbcType=VARCHAR}, #{clientCommentId,jdbcType=VARCHAR}, #{commentCreateTime,jdbcType=BIGINT}, 
+      #{commentAuthorEmail,jdbcType=VARCHAR}, #{commentAuthorId,jdbcType=VARCHAR}, #{commentOnArticleId,jdbcType=VARCHAR}, 
+      #{commentSharpURL,jdbcType=VARCHAR}, #{commentOriginalCommentId,jdbcType=VARCHAR}, 
+      #{commentStatus,jdbcType=INTEGER}, #{commentIP,jdbcType=VARCHAR}, #{commentUA,jdbcType=VARCHAR}, 
+      #{commentAnonymous,jdbcType=INTEGER}, #{commentGoodCnt,jdbcType=INTEGER}, #{commentBadCnt,jdbcType=INTEGER}, 
+      #{commentScore,jdbcType=DOUBLE}, #{commentReplyCnt,jdbcType=INTEGER}, #{commentContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.CommentDmo">
+    insert into blodgod_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="clientCommentId != null">
+        clientCommentId,
+      </if>
+      <if test="commentCreateTime != null">
+        commentCreateTime,
+      </if>
+      <if test="commentAuthorEmail != null">
+        commentAuthorEmail,
+      </if>
+      <if test="commentAuthorId != null">
+        commentAuthorId,
+      </if>
+      <if test="commentOnArticleId != null">
+        commentOnArticleId,
+      </if>
+      <if test="commentSharpURL != null">
+        commentSharpURL,
+      </if>
+      <if test="commentOriginalCommentId != null">
+        commentOriginalCommentId,
+      </if>
+      <if test="commentStatus != null">
+        commentStatus,
+      </if>
+      <if test="commentIP != null">
+        commentIP,
+      </if>
+      <if test="commentUA != null">
+        commentUA,
+      </if>
+      <if test="commentAnonymous != null">
+        commentAnonymous,
+      </if>
+      <if test="commentGoodCnt != null">
+        commentGoodCnt,
+      </if>
+      <if test="commentBadCnt != null">
+        commentBadCnt,
+      </if>
+      <if test="commentScore != null">
+        commentScore,
+      </if>
+      <if test="commentReplyCnt != null">
+        commentReplyCnt,
+      </if>
+      <if test="commentContent != null">
+        commentContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="clientCommentId != null">
+        #{clientCommentId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentCreateTime != null">
+        #{commentCreateTime,jdbcType=BIGINT},
+      </if>
+      <if test="commentAuthorEmail != null">
+        #{commentAuthorEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="commentAuthorId != null">
+        #{commentAuthorId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentOnArticleId != null">
+        #{commentOnArticleId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentSharpURL != null">
+        #{commentSharpURL,jdbcType=VARCHAR},
+      </if>
+      <if test="commentOriginalCommentId != null">
+        #{commentOriginalCommentId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentStatus != null">
+        #{commentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="commentIP != null">
+        #{commentIP,jdbcType=VARCHAR},
+      </if>
+      <if test="commentUA != null">
+        #{commentUA,jdbcType=VARCHAR},
+      </if>
+      <if test="commentAnonymous != null">
+        #{commentAnonymous,jdbcType=INTEGER},
+      </if>
+      <if test="commentGoodCnt != null">
+        #{commentGoodCnt,jdbcType=INTEGER},
+      </if>
+      <if test="commentBadCnt != null">
+        #{commentBadCnt,jdbcType=INTEGER},
+      </if>
+      <if test="commentScore != null">
+        #{commentScore,jdbcType=DOUBLE},
+      </if>
+      <if test="commentReplyCnt != null">
+        #{commentReplyCnt,jdbcType=INTEGER},
+      </if>
+      <if test="commentContent != null">
+        #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.CommentDmo">
+    update blodgod_comment
+    <set>
+      <if test="clientCommentId != null">
+        clientCommentId = #{clientCommentId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentCreateTime != null">
+        commentCreateTime = #{commentCreateTime,jdbcType=BIGINT},
+      </if>
+      <if test="commentAuthorEmail != null">
+        commentAuthorEmail = #{commentAuthorEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="commentAuthorId != null">
+        commentAuthorId = #{commentAuthorId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentOnArticleId != null">
+        commentOnArticleId = #{commentOnArticleId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentSharpURL != null">
+        commentSharpURL = #{commentSharpURL,jdbcType=VARCHAR},
+      </if>
+      <if test="commentOriginalCommentId != null">
+        commentOriginalCommentId = #{commentOriginalCommentId,jdbcType=VARCHAR},
+      </if>
+      <if test="commentStatus != null">
+        commentStatus = #{commentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="commentIP != null">
+        commentIP = #{commentIP,jdbcType=VARCHAR},
+      </if>
+      <if test="commentUA != null">
+        commentUA = #{commentUA,jdbcType=VARCHAR},
+      </if>
+      <if test="commentAnonymous != null">
+        commentAnonymous = #{commentAnonymous,jdbcType=INTEGER},
+      </if>
+      <if test="commentGoodCnt != null">
+        commentGoodCnt = #{commentGoodCnt,jdbcType=INTEGER},
+      </if>
+      <if test="commentBadCnt != null">
+        commentBadCnt = #{commentBadCnt,jdbcType=INTEGER},
+      </if>
+      <if test="commentScore != null">
+        commentScore = #{commentScore,jdbcType=DOUBLE},
+      </if>
+      <if test="commentReplyCnt != null">
+        commentReplyCnt = #{commentReplyCnt,jdbcType=INTEGER},
+      </if>
+      <if test="commentContent != null">
+        commentContent = #{commentContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOIdWithBLOBs" parameterType="com.blackblod.web.dmo.CommentDmo">
+    update blodgod_comment
+    set clientCommentId = #{clientCommentId,jdbcType=VARCHAR},
+      commentCreateTime = #{commentCreateTime,jdbcType=BIGINT},
+      commentAuthorEmail = #{commentAuthorEmail,jdbcType=VARCHAR},
+      commentAuthorId = #{commentAuthorId,jdbcType=VARCHAR},
+      commentOnArticleId = #{commentOnArticleId,jdbcType=VARCHAR},
+      commentSharpURL = #{commentSharpURL,jdbcType=VARCHAR},
+      commentOriginalCommentId = #{commentOriginalCommentId,jdbcType=VARCHAR},
+      commentStatus = #{commentStatus,jdbcType=INTEGER},
+      commentIP = #{commentIP,jdbcType=VARCHAR},
+      commentUA = #{commentUA,jdbcType=VARCHAR},
+      commentAnonymous = #{commentAnonymous,jdbcType=INTEGER},
+      commentGoodCnt = #{commentGoodCnt,jdbcType=INTEGER},
+      commentBadCnt = #{commentBadCnt,jdbcType=INTEGER},
+      commentScore = #{commentScore,jdbcType=DOUBLE},
+      commentReplyCnt = #{commentReplyCnt,jdbcType=INTEGER},
+      commentContent = #{commentContent,jdbcType=LONGVARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOId" parameterType="com.blackblod.web.dmo.CommentDmo">
+    update blodgod_comment
+    set clientCommentId = #{clientCommentId,jdbcType=VARCHAR},
+      commentCreateTime = #{commentCreateTime,jdbcType=BIGINT},
+      commentAuthorEmail = #{commentAuthorEmail,jdbcType=VARCHAR},
+      commentAuthorId = #{commentAuthorId,jdbcType=VARCHAR},
+      commentOnArticleId = #{commentOnArticleId,jdbcType=VARCHAR},
+      commentSharpURL = #{commentSharpURL,jdbcType=VARCHAR},
+      commentOriginalCommentId = #{commentOriginalCommentId,jdbcType=VARCHAR},
+      commentStatus = #{commentStatus,jdbcType=INTEGER},
+      commentIP = #{commentIP,jdbcType=VARCHAR},
+      commentUA = #{commentUA,jdbcType=VARCHAR},
+      commentAnonymous = #{commentAnonymous,jdbcType=INTEGER},
+      commentGoodCnt = #{commentGoodCnt,jdbcType=INTEGER},
+      commentBadCnt = #{commentBadCnt,jdbcType=INTEGER},
+      commentScore = #{commentScore,jdbcType=DOUBLE},
+      commentReplyCnt = #{commentReplyCnt,jdbcType=INTEGER}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>

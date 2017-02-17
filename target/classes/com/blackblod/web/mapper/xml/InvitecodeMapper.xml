@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackblod.web.mapper.InvitecodeMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.InvitecodeDmo">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="generatorId" jdbcType="VARCHAR" property="generatorId" />
+    <result column="userId" jdbcType="VARCHAR" property="userId" />
+    <result column="useTime" jdbcType="BIGINT" property="useTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.InvitecodeDmo">
+    <result column="memo" jdbcType="LONGVARCHAR" property="memo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oId, code, generatorId, userId, useTime, status
+  </sql>
+  <sql id="Blob_Column_List">
+    memo
+  </sql>
+  <select id="selectByOId" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from blodgod_invitecode
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByOId" parameterType="java.lang.String">
+    delete from blodgod_invitecode
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.blackblod.web.dmo.InvitecodeDmo">
+    insert into blodgod_invitecode (oId, code, generatorId, 
+      userId, useTime, status, 
+      memo)
+    values (#{oId,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{generatorId,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{useTime,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, 
+      #{memo,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.InvitecodeDmo">
+    insert into blodgod_invitecode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="generatorId != null">
+        generatorId,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="useTime != null">
+        useTime,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="generatorId != null">
+        #{generatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="useTime != null">
+        #{useTime,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.InvitecodeDmo">
+    update blodgod_invitecode
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="generatorId != null">
+        generatorId = #{generatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="useTime != null">
+        useTime = #{useTime,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOIdWithBLOBs" parameterType="com.blackblod.web.dmo.InvitecodeDmo">
+    update blodgod_invitecode
+    set code = #{code,jdbcType=VARCHAR},
+      generatorId = #{generatorId,jdbcType=VARCHAR},
+      userId = #{userId,jdbcType=VARCHAR},
+      useTime = #{useTime,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      memo = #{memo,jdbcType=LONGVARCHAR}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOId" parameterType="com.blackblod.web.dmo.InvitecodeDmo">
+    update blodgod_invitecode
+    set code = #{code,jdbcType=VARCHAR},
+      generatorId = #{generatorId,jdbcType=VARCHAR},
+      userId = #{userId,jdbcType=VARCHAR},
+      useTime = #{useTime,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>

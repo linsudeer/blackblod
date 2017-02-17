@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackblod.web.mapper.VerifycodeMapper">
+  <resultMap id="BaseResultMap" type="com.blackblod.web.dmo.VerifycodeDmo">
+    <id column="oId" jdbcType="VARCHAR" property="oId" />
+    <result column="userId" jdbcType="VARCHAR" property="userId" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="bizType" jdbcType="INTEGER" property="bizType" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="expired" jdbcType="BIGINT" property="expired" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    oId, userId, type, bizType, receiver, code, status, expired
+  </sql>
+  <select id="selectByOId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from blodgod_verifycode
+    where oId = #{oId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByOId" parameterType="java.lang.String">
+    delete from blodgod_verifycode
+    where oId = #{oId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.blackblod.web.dmo.VerifycodeDmo">
+    insert into blodgod_verifycode (oId, userId, type, 
+      bizType, receiver, code, 
+      status, expired)
+    values (#{oId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{bizType,jdbcType=INTEGER}, #{receiver,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{expired,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.VerifycodeDmo">
+    insert into blodgod_verifycode
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        oId,
+      </if>
+      <if test="userId != null">
+        userId,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="bizType != null">
+        bizType,
+      </if>
+      <if test="receiver != null">
+        receiver,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="expired != null">
+        expired,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oId != null">
+        #{oId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="bizType != null">
+        #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="receiver != null">
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="expired != null">
+        #{expired,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.VerifycodeDmo">
+    update blodgod_verifycode
+    <set>
+      <if test="userId != null">
+        userId = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="bizType != null">
+        bizType = #{bizType,jdbcType=INTEGER},
+      </if>
+      <if test="receiver != null">
+        receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="expired != null">
+        expired = #{expired,jdbcType=BIGINT},
+      </if>
+    </set>
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByOId" parameterType="com.blackblod.web.dmo.VerifycodeDmo">
+    update blodgod_verifycode
+    set userId = #{userId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      bizType = #{bizType,jdbcType=INTEGER},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      expired = #{expired,jdbcType=BIGINT}
+    where oId = #{oId,jdbcType=VARCHAR}
+  </update>
+</mapper>
