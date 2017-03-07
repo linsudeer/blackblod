@@ -16,8 +16,6 @@
     <result column="tagSeoTitle" jdbcType="VARCHAR" property="tagSeoTitle" />
     <result column="tagSeoKeywords" jdbcType="VARCHAR" property="tagSeoKeywords" />
     <result column="tagRandomDouble" jdbcType="DOUBLE" property="tagRandomDouble" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.TagDmoWithBLOBs">
     <result column="tagDescription" jdbcType="LONGVARCHAR" property="tagDescription" />
     <result column="tagCSS" jdbcType="LONGVARCHAR" property="tagCSS" />
     <result column="tagSeoDesc" jdbcType="LONGVARCHAR" property="tagSeoDesc" />
@@ -25,16 +23,11 @@
   <sql id="Base_Column_List">
     oId, tagReferenceCount, tagCommentCount, tagFollowerCount, tagLinkCount, tagTitle, 
     tagURI, tagIconPath, tagStatus, tagGoodCnt, tagBadCnt, tagSeoTitle, tagSeoKeywords, 
-    tagRandomDouble
+    tagRandomDouble,tagDescription, tagCSS, tagSeoDesc
   </sql>
-  <sql id="Blob_Column_List">
-    tagDescription, tagCSS, tagSeoDesc
-  </sql>
-  <select id="selectByOId" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+  <select id="selectByOId" parameterType="java.lang.String" resultMap="TagDmo">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from blodgod_tag
     where oId = #{oId,jdbcType=VARCHAR}
   </select>
@@ -42,7 +35,7 @@
     delete from blodgod_tag
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.blackblod.web.dmo.TagDmoWithBLOBs">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.TagDmo">
     insert into blodgod_tag (oId, tagReferenceCount, tagCommentCount, 
       tagFollowerCount, tagLinkCount, tagTitle, 
       tagURI, tagIconPath, tagStatus, 
@@ -56,7 +49,7 @@
       #{tagSeoKeywords,jdbcType=VARCHAR}, #{tagRandomDouble,jdbcType=DOUBLE}, #{tagDescription,jdbcType=LONGVARCHAR}, 
       #{tagCSS,jdbcType=LONGVARCHAR}, #{tagSeoDesc,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.TagDmoWithBLOBs">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.TagDmo">
     insert into blodgod_tag
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -165,7 +158,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.TagDmoWithBLOBs">
+  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.TagDmo">
     update blodgod_tag
     <set>
       <if test="tagReferenceCount != null">
@@ -217,26 +210,6 @@
         tagSeoDesc = #{tagSeoDesc,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where oId = #{oId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByOIdWithBLOBs" parameterType="com.blackblod.web.dmo.TagDmoWithBLOBs">
-    update blodgod_tag
-    set tagReferenceCount = #{tagReferenceCount,jdbcType=INTEGER},
-      tagCommentCount = #{tagCommentCount,jdbcType=INTEGER},
-      tagFollowerCount = #{tagFollowerCount,jdbcType=INTEGER},
-      tagLinkCount = #{tagLinkCount,jdbcType=INTEGER},
-      tagTitle = #{tagTitle,jdbcType=VARCHAR},
-      tagURI = #{tagURI,jdbcType=VARCHAR},
-      tagIconPath = #{tagIconPath,jdbcType=VARCHAR},
-      tagStatus = #{tagStatus,jdbcType=INTEGER},
-      tagGoodCnt = #{tagGoodCnt,jdbcType=INTEGER},
-      tagBadCnt = #{tagBadCnt,jdbcType=INTEGER},
-      tagSeoTitle = #{tagSeoTitle,jdbcType=VARCHAR},
-      tagSeoKeywords = #{tagSeoKeywords,jdbcType=VARCHAR},
-      tagRandomDouble = #{tagRandomDouble,jdbcType=DOUBLE},
-      tagDescription = #{tagDescription,jdbcType=LONGVARCHAR},
-      tagCSS = #{tagCSS,jdbcType=LONGVARCHAR},
-      tagSeoDesc = #{tagSeoDesc,jdbcType=LONGVARCHAR}
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
   <update id="updateByOId" parameterType="com.blackblod.web.dmo.TagDmo">

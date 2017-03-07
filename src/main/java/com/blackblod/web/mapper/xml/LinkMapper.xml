@@ -10,23 +10,16 @@
     <result column="linkBadCnt" jdbcType="INTEGER" property="linkBadCnt" />
     <result column="linkBaiduRefCnt" jdbcType="INTEGER" property="linkBaiduRefCnt" />
     <result column="linkScore" jdbcType="DOUBLE" property="linkScore" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blackblod.web.dmo.LinkDmoWithBLOBs">
     <result column="linkAddr" jdbcType="LONGVARCHAR" property="linkAddr" />
     <result column="linkTitle" jdbcType="LONGVARCHAR" property="linkTitle" />
   </resultMap>
   <sql id="Base_Column_List">
     oId, linkType, linkSubmitCnt, linkClickCnt, linkGoodCnt, linkBadCnt, linkBaiduRefCnt, 
-    linkScore
-  </sql>
-  <sql id="Blob_Column_List">
-    linkAddr, linkTitle
+    linkScore,linkAddr, linkTitle
   </sql>
   <select id="selectByOId" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from blodgod_link
     where oId = #{oId,jdbcType=VARCHAR}
   </select>
@@ -34,7 +27,7 @@
     delete from blodgod_link
     where oId = #{oId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.blackblod.web.dmo.LinkDmoWithBLOBs">
+  <insert id="insert" parameterType="com.blackblod.web.dmo.LinkDmo">
     insert into blodgod_link (oId, linkType, linkSubmitCnt, 
       linkClickCnt, linkGoodCnt, linkBadCnt, 
       linkBaiduRefCnt, linkScore, linkAddr, 
@@ -44,7 +37,7 @@
       #{linkBaiduRefCnt,jdbcType=INTEGER}, #{linkScore,jdbcType=DOUBLE}, #{linkAddr,jdbcType=LONGVARCHAR}, 
       #{linkTitle,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.LinkDmoWithBLOBs">
+  <insert id="insertSelective" parameterType="com.blackblod.web.dmo.LinkDmo">
     insert into blodgod_link
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="oId != null">
@@ -111,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.LinkDmoWithBLOBs">
+  <update id="updateByOIdSelective" parameterType="com.blackblod.web.dmo.LinkDmo">
     update blodgod_link
     <set>
       <if test="linkType != null">
@@ -142,19 +135,6 @@
         linkTitle = #{linkTitle,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where oId = #{oId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByOIdWithBLOBs" parameterType="com.blackblod.web.dmo.LinkDmoWithBLOBs">
-    update blodgod_link
-    set linkType = #{linkType,jdbcType=INTEGER},
-      linkSubmitCnt = #{linkSubmitCnt,jdbcType=INTEGER},
-      linkClickCnt = #{linkClickCnt,jdbcType=INTEGER},
-      linkGoodCnt = #{linkGoodCnt,jdbcType=INTEGER},
-      linkBadCnt = #{linkBadCnt,jdbcType=INTEGER},
-      linkBaiduRefCnt = #{linkBaiduRefCnt,jdbcType=INTEGER},
-      linkScore = #{linkScore,jdbcType=DOUBLE},
-      linkAddr = #{linkAddr,jdbcType=LONGVARCHAR},
-      linkTitle = #{linkTitle,jdbcType=LONGVARCHAR}
     where oId = #{oId,jdbcType=VARCHAR}
   </update>
   <update id="updateByOId" parameterType="com.blackblod.web.dmo.LinkDmo">

@@ -277,7 +277,12 @@
   </dependencies>
   <build>
     <finalName>linsu-blog-core</finalName>
-    
-	  
+    <plugins>
+    	<plugin>
+    		<groupId>org.apache.tomcat</groupId>
+    		<artifactId>tomcat-catalina</artifactId>
+    		<version>9.0.0.M17</version>
+    	</plugin>
+    </plugins>
   </build>
 </project>
